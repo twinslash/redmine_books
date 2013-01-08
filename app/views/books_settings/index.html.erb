@@ -1,0 +1,41 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'book', plugin: 'redmine_books' %>
+<% end %>
+
+<h2><%= l(:label_books_settings) %></h2>
+
+<div class="splitcontentleft" id="users_books_permissions">
+  <%= render 'users_books_permissions' %>
+</div>
+
+
+<div class="splitcontentright">
+  <% principals = Principal.active.all(limit: 100, order: 'type, login, lastname ASC') %>
+  <% if principals.any? %>
+    <%= form_tag(books_settings_path, remote: true, method: :post, id: "users_books_permissions_form") do |f| %>
+      <fieldset>
+        <legend><%= l(:label_permissions_new) %></legend>
+        <p>
+          <%= label_tag "user_search", l(:label_user_search) %><%= text_field_tag 'user_search', nil %>
+        </p>
+        <%= javascript_tag "observeSearchfield('user_search', 'principals', '#{escape_javascript autocomplete_for_users_books_settings_path}')" %>
+
+        <div id="principals">
+          <%= principals_check_box_tags 'user_ids[]', principals %>
+        </div>
+        <p>
+          <%= l(:label_action_plural) %>:
+          <% RedmineBooks.available_user_books_actions.each do |action| %>
+            <label>
+              <%= check_box_tag 'actions[]', action %>
+              <%= l_or_humanize(action, prefix: 'user_books_action_') %>
+            </label>
+          <% end %>
+        </p>
+        <p>
+          <%= submit_tag l(:button_add) %>
+        </p>
+      </fieldset>
+    <% end %>
+  <% end %>
+</div>

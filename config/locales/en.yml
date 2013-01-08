@@ -1,0 +1,48 @@
+en:
+  label_books: Books
+  label_books_settings: Books settings
+  label_permissions_new: New permissions
+  back: Back
+  label_action: Action
+  label_action_plural: Actions
+  label_book_new: New book
+
+  user_books_action_edit_book: Edit book
+  user_books_action_add_book: Add book
+  user_books_action_delete_book: Delete book
+  user_books_action_take_book: Take book
+  user_books_action_return_book: Return book
+
+  notice_book_deleting: "Book %{title} deleted."
+
+  error_book_deleting: "An error occurred when removing the book %{title}"
+
+  helpers:
+    submit:
+      book:
+        create: Add book
+        update: Save changes
+    label:
+      book: &book_labels
+        author: Author
+        book_files: Book files
+        description: Description
+        photo: Photo
+        status: Status
+        title: Title
+        files: Files
+  book:
+    new: Add new book
+    <<: *book_labels
+  enumerize:
+    status:
+      ebook: E-book
+      will_be_purchased: Will be purchesed
+      busy: Busy
+      free: Free
+  nested_form:
+    links:
+      book:
+        book_file:
+          link_to_add: Add a book file
+          link_to_remove: Remove this book file

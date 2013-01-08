@@ -1,0 +1,48 @@
+ru:
+  label_books: Книги
+  label_books_settings: Настройки книг
+  label_permissions_new: Новые разрешения
+  back: Нвзад
+  label_action: Действие
+  label_action_plural: Действия
+  label_book_new: Новая книга
+
+  user_books_action_edit_book: Редактировать книгу
+  user_books_action_add_book: Создать книгу
+  user_books_action_delete_book: Удалить книгу
+  user_books_action_take_book: Взять книгу
+  user_books_action_return_book: Возвратить book
+
+  notice_book_deleted: "Книга %{title} удалена."
+
+  error_book_deleting: "Произошла ошбка при удалении книги %{title}."
+
+  helpers:
+    submit:
+      book:
+        create: Добавить книгу
+        update: Сохранить изменения
+    label:
+      book: &book_labels
+        author: Автор
+        book_files: Файлы книги
+        description: Описание
+        photo: Фото
+        status: Статус
+        title: Заголовок
+        files: Файлы
+  book:
+    new: Добавить новую книгу
+    <<: *book_labels
+  enumerize:
+    status:
+      ebook:  Электронная книга
+      will_be_purchased: Планируется приобрести
+      busy: Занята
+      free: Свободна
+  nested_form:
+    links:
+      book:
+        book_file:
+          link_to_add: Добавить файл книги
+          link_to_remove: Удалить файл книги

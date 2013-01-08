@@ -1,0 +1,50 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "book", plugin: "redmine_books" %>
+  <%= javascript_include_tag "photo_functions", plugin: "redmine_books" %>
+  <%= javascript_include_tag "nested_form", plugin: "redmine_books" %>
+<% end %>
+
+<%= nested_form_for @book, html: { multipart: true, id: :book_form } do |f| %>
+  <%= error_messages_for 'book' %>
+
+  <div class="box tabular">
+    <div>
+      <p>
+        <%= f.label :status %>
+        <%= f.select :status, Book.status.options %>
+      </p>
+      <p>
+        <%= f.label :title %>
+        <%= f.text_field :title, size: 69, required: true %>
+      </p>
+      <p>
+        <%= f.label :author %>
+        <%= f.text_field :author, size: 69, required: true %>
+      </p>
+    <div class="book-form-photo-group">
+      <div id="photo" class="book-form-photo">
+        <% if @book.photo.present? %>
+          <%= photo_for @book, :original, width: "430px" %>
+        <% else %>
+          <%= render "fake_photo" %>
+        <% end %>
+      </div>
+      <%= f.label :photo %>
+      <%= f.file_field :photo %>
+    </div>
+      <p>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'wiki-edit', rows: 5 %>
+        <%= wikitoolbar_for 'book_description' %>
+      </p>
+      <p>
+        <%= f.label :book_files %>
+        <%= f.fields_for :book_files  do |book_file_form| %>
+          <%= book_file_form.file_field :file %>
+          <%= book_file_form.link_to_remove l("nested_form.links.book.book_file.link_to_remove") %>
+        <% end %>
+        <%= f.link_to_add l("nested_form.links.book.book_file.link_to_add"), :book_files %>
+      </p>
+  </div>
+  <%= f.submit %>
+<% end %>

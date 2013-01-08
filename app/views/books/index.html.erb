@@ -1,0 +1,16 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag "book", plugin: "redmine_books" %>
+<% end %>
+<% if User.current.allowed_books_to? "add_book" %>
+  <div class="contextual">
+    <%= link_to l('book.new'), new_book_path, class: 'icon icon-add' %>
+  </div>
+<% end %>
+
+<%= pagination_links_full @books_pages, @books_count %>
+
+<table class="books-table">
+  <%= render @books %>
+</table>
+
+<%= pagination_links_full @books_pages, @books_count %>

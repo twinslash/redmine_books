@@ -1,0 +1,135 @@
+.book-form-photo-group {
+  max-width: 450px;
+  margin-left: 180px;
+}
+
+.book-form-photo {
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  width: 430px;
+}
+
+.book-show {
+  width: 80%;
+  margin-top: 5px;
+  margin-left: 10%;
+  display: inline-block;
+  border: 1px solid gray;
+  clear: both;
+}
+
+.book-status {
+  margin: 0;
+  padding: 0;
+  border-bottom: 3px double gray;
+  border-right: 3px double gray;
+  float: left;
+  color: blue;
+  font-size: 1.2em;
+  background: #DDD;
+}
+
+.book-show-photo {
+  display: table-cell;
+  vertical-align: middle;
+  max-width: 450px;
+  max-height: 450px;
+  text-align: center;
+  padding: 0;
+}
+
+.book-show-content {
+  margin: 3%;
+  width: 45%;
+}
+
+.book-attribute {
+  font-size: 1.2em;
+  line-height: 150%;
+}
+
+.book-show-description {
+  margin: 0;
+  padding: 0;
+  text-indent: 5%;
+}
+
+.book-index {
+  text-align: center;
+  margin: 2px 5px 3px 5px;
+}
+
+.book-index-author {
+  display: inline;
+  font-style: oblique;
+}
+
+.book-index-title {
+  display: inline;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-left: 4px;
+}
+
+.book-index-photo {
+  width: 100%;
+  padding: 2px 5px 3px 5px;
+}
+
+.books-table {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.books-photo-cell {
+  height: 200px;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+
+.books-photo {
+  height: 200px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.books-info-cell {
+  width: 100%;
+  font-size: 11px;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  padding: 5px 10px;
+}
+
+.books-link {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.books-link a {
+  color: #034B83;
+}
+
+.books-link a:hover {
+  color: #034B83;
+  text-decoration: underline;
+}
+
+.books-separator {
+  border-top: 1px solid #6495BB;
+}
+
+#users_books_permissions_form fieldset label {
+  display: block;
+}
+
+#users_books_permissions_form fieldset div {
+  max-height: 400px;
+  overflow: auto;
+}
+
+#admin-menu a.books { background-image: url(../images/book_icon.png); }
+a.icon-take-book { background-image: url(../images/take_book_icon.png); }
+a.icon-return-book { background-image: url(../images/return_book_icon.png); }

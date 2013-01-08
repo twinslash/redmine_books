@@ -1,0 +1,37 @@
+<%= content_for :header_tags do %>
+  <%= stylesheet_link_tag 'book', plugin: 'redmine_books'%>
+<% end %>
+
+<div class="contextual">
+  <%= render 'menu', book: @book %>
+</div>
+
+<!-- <table class="book-show">
+
+</table> -->
+<div  class="book-show">
+  <div class="book-status">
+    <%= @book.status %>
+  </div>
+  <div  style="float:right;border-left:1px solid gray;padding:6px 10px;">
+    <div class="book-show-photo">
+      <%= photo_for @book, :original, width: "450px;" %>
+    </div>
+  </div>
+  <div class="book-show-content">
+    <b class="book-attribute"><%= l("book.title") %>:</b>
+    <%= @book.title %><br>
+    <b class="book-attribute"><%= l("book.author") %>:</b>
+    <%= @book.author %><br>
+    <% unless @book.description.blank? %>
+      <b class="book-attribute"><%= l("book.description") %>:</b>
+      <p class="book-show-description"><%= textilizable(@book.description) %></p>
+    <% end %>
+    <% unless @book.book_files.blank? %>
+      <b class="book-attribute"><%= l("book.files") %>:</b></br>
+      <% @book.book_files.each do |book_file| %>
+        <%= link_to truncate(book_file.file_url.split('/').last, length: 48), book_file.file_url %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

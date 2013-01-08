@@ -1,0 +1,3 @@
+$('<%= "#book_#{ @book.id }_separator" %>').hide();
+$('<%= "#book_#{ @book.id }" %>').replaceWith('<%= escape_javascript render 'book', book: @book %>');
+<%= render 'remote_flash' %>
