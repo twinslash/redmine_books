@@ -7,10 +7,10 @@
   </div>
 <% end %>
 
-<%= pagination_links_full @books_pages, @books_count %>
+<%= pagination_links_full @books_pages, @books_count if @books.any? %>
 
 <table class="books-table">
   <%= render @books %>
 </table>
 
-<%= pagination_links_full @books_pages, @books_count %>
+<%= pagination_links_full @books_pages, @books_count if @books.any? %>

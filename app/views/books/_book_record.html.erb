@@ -1,0 +1,8 @@
+<tr>
+  <td>
+    <% user = book_record.user %>
+    <%= link_to user.name, user_path(user) %>
+  </td>
+  <td><%= book_record.taken_at %></td>
+  <td><%= book_record.returned_at || '-' %></td>
+</tr>

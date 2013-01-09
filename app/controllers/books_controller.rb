@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
     if @book.save
-      flash[:notice] = "Book sucessfully saved."
+      flash[:notice] = l(:notice_book_saved)
       redirect_to book_path @book
     else
       render action: :new
@@ -34,7 +34,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update_attributes(params[:book])
-      flash[:notice] = "Book sucessfully updated."
+      flash[:notice] = l(:notice_book_updated)
       redirect_to book_path @book
     else
       render action: :edit
@@ -70,31 +70,41 @@ class BooksController < ApplicationController
   def take
     @book.status = :busy
     @book_record = BookRecord.new(user_id: User.current.id, book_id: params[:id], taken_at: Date.today)
+    @book.user = User.current
     if @book_record.save
-      flash[:notice] = "Book successfully taken"
+      flash[:notice] = l(:notice_book_taken, title: @book.title)
       @book.save
     else
-      flash[:error] = "An error ocurred when taken book"
+      flash[:error] = l(:error_book_taking, title: @book.title)
     end
     respond_to do |format|
-      format.html { render action: :show }
+      format.html { redirect_to book_path @book }
       format.js { render 'update_book_on_index' }
     end
   end
 
   def give
     @book.status = :free
-    @book_record = BookRecord.where(user_id: User.current.id, book_id: params[:id]).last_by_taken_at
+    @book_record = BookRecord.where(user_id: User.current.id, book_id: params[:id], returned_at: nil).last_by_taken_at
     @book_record.returned_at = Date.today
+    @book.user = nil
     if @book_record.save
-      flash[:notice] = "Book successfully returned"
+      flash[:notice] = l(:notice_book_returned, title: @book.title)
       @book.save
     else
-      flash[:error] = "An error ocurred when returning book"
+      flash[:error] = l(:error_book_returning, title: @book.title)
     end
     respond_to do |format|
-      format.html { render action: :show }
+      format.html { redirect_to book_path @book }
       format.js { render 'update_book_on_index' }
+    end
+  end
+
+  def load_history
+    @book = Book.find(params[:id])
+    @book_records = @book.book_records
+    respond_to do |format|
+      format.js
     end
   end
 

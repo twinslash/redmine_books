@@ -6,14 +6,9 @@
   <%= render 'menu', book: @book %>
 </div>
 
-<!-- <table class="book-show">
-
-</table> -->
 <div  class="book-show">
-  <div class="book-status">
-    <%= @book.status %>
-  </div>
-  <div  style="float:right;border-left:1px solid gray;padding:6px 10px;">
+  <%= render 'book_status', book: @book %>
+  <div  style="float:right;padding:6px 10px;">
     <div class="book-show-photo">
       <%= photo_for @book, :original, width: "450px;" %>
     </div>
@@ -34,4 +29,5 @@
       <% end %>
     <% end %>
   </div>
+  <%= link_to l(:link_show_history), load_history_book_path(@book), id: 'book_history', remote: true if @book.free? || @book.busy? %>
 </div>

@@ -10,6 +10,11 @@
   width: 430px;
 }
 
+.book-form-fake-photo {
+  background: #DDD;
+  height: 430px;
+}
+
 .book-show {
   width: 80%;
   margin-top: 5px;
@@ -28,6 +33,14 @@
   color: blue;
   font-size: 1.2em;
   background: #DDD;
+}
+
+.book-current-user {
+  display: inline;
+  padding: 3px;
+  margin: 0;
+  float: left;
+  color: #999;
 }
 
 .book-show-photo {
@@ -55,26 +68,15 @@
   text-indent: 5%;
 }
 
-.book-index {
-  text-align: center;
-  margin: 2px 5px 3px 5px;
-}
-
-.book-index-author {
-  display: inline;
-  font-style: oblique;
-}
-
-.book-index-title {
-  display: inline;
-  font-weight: bold;
-  font-size: 1.2em;
-  padding-left: 4px;
-}
-
-.book-index-photo {
+#book_history {
+  clear: both;
+  display: block;
   width: 100%;
-  padding: 2px 5px 3px 5px;
+  text-align: center;
+  font-family: Verdana, Geneva, Arial, Helvetica;
+  border-radius: 3px 3px 0 0;
+  color: gray;
+  background:#EEE; padding: 6px 0;
 }
 
 .books-table {
@@ -130,6 +132,5 @@
   overflow: auto;
 }
 
-#admin-menu a.books { background-image: url(../images/book_icon.png); }
 a.icon-take-book { background-image: url(../images/take_book_icon.png); }
 a.icon-return-book { background-image: url(../images/return_book_icon.png); }

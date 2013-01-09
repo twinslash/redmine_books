@@ -28,3 +28,7 @@ module RedmineBooks
     end
   end
 end
+
+#'public/tmp' folder for temporary storage of images that the user chooses to book
+tempstore_path = File.expand_path('public/tmp', Rails.root)
+Dir.mkdir(tempstore_path) unless Dir.exists?(tempstore_path)

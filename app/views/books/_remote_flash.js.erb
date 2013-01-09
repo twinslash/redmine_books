@@ -1,12 +1,14 @@
 $('.notice').hide();
-<% [:notice, :warning, :error].each do |msg_type| %>
-  <% if flash[msg_type] %>
-    <% p "-"*80 %>
-    child = document.createElement('div');
-    child.setAttribute('class', '<%= "flash #{msg_type}" %>');
-    child.id = '<%= "flash_#{msg_type}" %>';
-    child.innerHTML = '<%= flash[msg_type] %>';
-    content.insertBefore(child, content.firstChild);
+(function() {
+  var child;
+  <% [:notice, :warning, :error].each do |msg_type| %>
+    <% if flash[msg_type] %>
+      child = document.createElement('div');
+      child.setAttribute('class', '<%= "flash #{msg_type}" %>');
+      child.id = '<%= "flash_#{msg_type}" %>';
+      child.innerHTML = '<%= flash[msg_type] %>';
+      $('#content')[0].insertBefore(child, content.firstChild);
+    <% end %>
   <% end %>
-<% end %>
+})();
 <% flash.discard %>

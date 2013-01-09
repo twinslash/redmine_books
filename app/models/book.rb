@@ -7,6 +7,7 @@ class Book < ActiveRecord::Base
   has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }
   has_many :book_files, dependent: :destroy
   has_many :book_records, dependent: :destroy
+  belongs_to :user
   validates :title, :author, presence: true
   accepts_nested_attributes_for :book_files, allow_destroy: :true
 

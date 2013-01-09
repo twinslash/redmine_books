@@ -7,15 +7,23 @@ ru:
   label_action_plural: Действия
   label_book_new: Новая книга
 
+  link_show_history:  Показать историю книги
+
   user_books_action_edit_book: Редактировать книгу
   user_books_action_add_book: Создать книгу
   user_books_action_delete_book: Удалить книгу
   user_books_action_take_book: Взять книгу
-  user_books_action_return_book: Возвратить book
+  user_books_action_return_book: Возвратить книгу
 
-  notice_book_deleted: "Книга %{title} удалена."
+  notice_book_deleted: "Книга '%{title}' удалена"
+  notice_book_saved: Книга успешно сохранена
+  notice_book_updated: Книга успешно обновлена
+  notice_book_taken: "Вы успешно взяли книгу '%{title}'"
+  notice_book_returned: "Вы успешно вернули книгу %{title}"
 
-  error_book_deleting: "Произошла ошбка при удалении книги %{title}."
+  error_book_deleting: "Произошла ошбка при удалении книги '%{title}'"
+  error_book_taking: "Произошла ошибка. Вы не взяли книгу '%{title}'"
+  error_book_returning: "Произошла ошибка. Вы не вернули книгу '%{title}'"
 
   helpers:
     submit:
@@ -33,6 +41,11 @@ ru:
         files: Файлы
   book:
     new: Добавить новую книгу
+    taken_by: Кто брал
+    taken_at: Взял(дата)
+    returned_at: Вернул(дата)
+    empty_history: История пуста
+    current_user: текущий пользователь
     <<: *book_labels
   enumerize:
     status:

@@ -51,6 +51,6 @@ function progressHandlingFunction(e) {
 }
 
 function beforeSendHandler() {
-    $('#photo').replaceWith("<div class='book-form-photo' id='photo'><progress style='position:relative;left:35%;top:50%'></progress></div>");
+    $('#photo').replaceWith("<div class='book-form-photo book-form-fake-photo' id='photo'><progress style='position:relative;left:35%;top:50%'></progress></div>");
 }
 

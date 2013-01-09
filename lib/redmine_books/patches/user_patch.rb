@@ -8,6 +8,11 @@ module RedmineBooks
     module UserPatch
       def self.included(base)
         base.send(:include, InstanceMethods)
+
+        base.class_eval do
+          unloadable
+          has_many :book_records, dependent: :destroy
+        end
       end
 
       module InstanceMethods
@@ -26,7 +31,7 @@ module RedmineBooks
               action = "take_book"
               @user_books_permission.allows?(action) && book.is_a?(Book) && book.free?
             when "return_book", "give"
-              book.is_a?(Book) && book.busy? && (book.last_take == self)
+              book.is_a?(Book) && book.busy? && (book.user == self)
             when "delete_book", "destroy"
               action = "delete_book"
               @user_books_permission.allows? action

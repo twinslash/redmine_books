@@ -1,6 +1,6 @@
 <tr id=<%= "book_#{ book.id }" %>>
   <td class="books-photo-cell" align="center">
-    <div class="book-status"><%= book.status %></div>
+    <%= render 'book_status', book: book %>
     <div class="books-photo">
       <%= link_to photo_for(book, nil, height: "200px"), book_path(book) %>
     </div>
