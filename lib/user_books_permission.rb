@@ -9,16 +9,20 @@ class UserBooksPermission
   def self.all
     return [] unless validates_permissions
     permissions.map do |user_id, actions|
-      self.new(user_id, actions)
-    end
+      self.new(user_id, actions) if actions.any?
+    end.compact
   end
 
   def self.create user_id, actions
-    new(user_id, actions).save
+    new(user_id, actions).instance_eval do
+      return false unless validates_user_id!
+      return false unless validates_actions!
+      save
+    end
   end
 
   def self.delete user_id
-    new(user_id, nil).save
+    new(user_id, nil).delete
   end
 
   def self.allows? user_id, action
@@ -37,26 +41,27 @@ class UserBooksPermission
     new(user_id, actions)
   end
 
-  def save
-    return false unless validates_user_id!
-    return false unless validates_actions!
+  def delete
     permissions = self.class.permissions
     permissions = {} unless self.class.validates_permissions
-    if actions.blank?
-      permissions.delete @user_id
-    else
-      permissions.merge!({ @user_id => @actions })
-    end
+    permissions.delete(@user_id)
+    Setting.plugin_redmine_books = Setting.plugin_redmine_books.merge(users_books_permissions: permissions)
+  end
+
+  def save
+    permissions = self.class.permissions
+    permissions = {} unless self.class.validates_permissions
+    permissions.merge!({ @user_id => @actions })
     Setting.plugin_redmine_books = Setting.plugin_redmine_books.merge(users_books_permissions: permissions)
   end
 
   def user
-    User.find(@user_id)
+    User.find_by_id(@user_id)
   end
 
   def allows? action
     return false unless action.is_a?(String) || action.is_a?(Symbol)
-    return @actions && @actions.respond_to?('include?') && @actions.include?(action.to_s)
+    return @actions && @actions.is_a?(Array) && @actions.include?(action.to_s)
   end
 
   private
@@ -65,7 +70,7 @@ class UserBooksPermission
     end
 
     def self.validates_permissions
-      return permissions && permissions.is_a?(Hash)
+      return permissions.is_a?(Hash)
     end
 
     def validates_user_id!
@@ -75,13 +80,11 @@ class UserBooksPermission
     end
 
     def validates_actions!
-      @actions = @actions || []
-      return false unless @actions.is_a?(Array) || @actions.blank?
-      unless @actions.blank?
-        @actions.uniq!
-        @actions.select! do |action|
-          action.respond_to?('to_sym') && action.to_sym.in?(RedmineBooks.available_user_books_actions)
-        end
+      @actions ||= []
+      return false unless @actions.is_a?(Array)
+      @actions.uniq!
+      @actions.select! do |action|
+        action.respond_to?('to_sym') && action.to_sym.in?(RedmineBooks.available_user_books_actions)
       end
       return true
     end

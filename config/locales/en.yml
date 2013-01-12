@@ -6,6 +6,7 @@ en:
   label_action: Action
   label_action_plural: Actions
   label_book_new: New book
+  label_book_edit: Edit book
 
   link_show_history: Show book history
 
@@ -59,3 +60,9 @@ en:
         book_file:
           link_to_add: Add a book file
           link_to_remove: Remove this book file
+
+  errors:
+    messages:
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is too small (should be at least %{file_size})"
+      size_too_big: "is too big (should be at most %{file_size})"

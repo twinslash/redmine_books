@@ -6,11 +6,12 @@
     <%= link_to l('book.new'), new_book_path, class: 'icon icon-add' %>
   </div>
 <% end %>
-
-<%= pagination_links_full @books_pages, @books_count if @books.any? %>
-
-<table class="books-table">
-  <%= render @books %>
-</table>
-
-<%= pagination_links_full @books_pages, @books_count if @books.any? %>
+<% if @books.any? %>
+  <%= pagination_links_full @books_pages, @books_count %>
+  <table class="books-table">
+    <%= render @books %>
+  </table>
+  <%= pagination_links_full @books_pages, @books_count %>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>

@@ -15,6 +15,10 @@ class BooksSettingsController < ApplicationController
   def create
     @user_ids = params[:user_ids]
     actions = params[:actions]
+    unless @user_ids
+      render nothing: true
+      return
+    end
     return if @user_ids.blank?
     @user_ids.each do |user_id|
       UserBooksPermission.create(user_id, actions)
