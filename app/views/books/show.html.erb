@@ -25,7 +25,7 @@
     <% unless @book.book_files.blank? %>
       <b class="book-attribute"><%= l("book.files") %>:</b></br>
       <% @book.book_files.each do |book_file| %>
-        <%= link_to truncate(book_file.file_url.split('/').last, length: 48), book_file.file_url %>
+        <%= link_to truncate(book_file.file_url.split('/').last, length: 48), book_file.file_url if book_file.file_url %></br>
       <% end %>
     <% end %>
   </div>

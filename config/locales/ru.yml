@@ -63,6 +63,6 @@ ru:
 
   errors:
     messages:
-      wrong_size: "недопустимый размер файла (должен быть %{file_size})"
+      wrong_size: "недопустимый размер (должен быть %{file_size})"
       size_too_small: "слишком мал (должен быть не менее %{file_size})"
       size_too_big: "слишком большой (должен быть не более %{file_size})"

@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
   has_many :book_files, dependent: :destroy
   has_many :book_records, dependent: :destroy
   belongs_to :user
-  validates :title, :author, presence: true
+  validates :title, :author, presence: true, length: { in: 2..100 }
   accepts_nested_attributes_for :book_files, allow_destroy: :true
 
   def last_take

@@ -22,7 +22,8 @@ class UserBooksPermission
   end
 
   def self.delete user_id
-    new(user_id, nil).delete
+    permission = find(user_id)
+    permission.delete if permission
   end
 
   def self.allows? user_id, action
@@ -37,7 +38,7 @@ class UserBooksPermission
     else
       user.to_s
     end
-    actions = validates_permissions && permissions[user_id]
+    actions = validates_permissions && permissions[user_id] || []
     new(user_id, actions)
   end
 
@@ -48,12 +49,6 @@ class UserBooksPermission
     Setting.plugin_redmine_books = Setting.plugin_redmine_books.merge(users_books_permissions: permissions)
   end
 
-  def save
-    permissions = self.class.permissions
-    permissions = {} unless self.class.validates_permissions
-    permissions.merge!({ @user_id => @actions })
-    Setting.plugin_redmine_books = Setting.plugin_redmine_books.merge(users_books_permissions: permissions)
-  end
 
   def user
     User.find_by_id(@user_id)
@@ -87,5 +82,12 @@ class UserBooksPermission
         action.respond_to?('to_sym') && action.to_sym.in?(RedmineBooks.available_user_books_actions)
       end
       return true
+    end
+
+    def save
+      permissions = self.class.permissions
+      permissions = {} unless self.class.validates_permissions
+      permissions.merge!({ @user_id => @actions })
+      Setting.plugin_redmine_books = Setting.plugin_redmine_books.merge(users_books_permissions: permissions)
     end
 end
