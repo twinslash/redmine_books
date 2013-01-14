@@ -1,8 +1,6 @@
-require 'file_size_validator'
-
 class BookFile < ActiveRecord::Base
   attr_accessible :file, :file_cache
   mount_uploader :file, FileUploader
-  validates :file, presence: true, file_size: { maximum: 50.megabytes.to_i }
+  validates :file, presence: true
   belongs_to :book
 end
