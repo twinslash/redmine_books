@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   unloadable
   before_filter :check_permission, only: [:new, :create, :edit, :update, :take, :give, :destroy]
   before_filter :assembly_photo_path, only: [:upload_photo, :delete_photo]
+  before_filter :delete_empty_book_files, only: [:create, :update]
 
   def index
     scope = Book.scoped
@@ -122,5 +123,11 @@ class BooksController < ApplicationController
 
     def assembly_photo_path
       @photo_path = Rails.root.to_path + "/public/tmp/" + params[:photo_name].to_s.split('/').join('_')
+    end
+
+    def delete_empty_book_files
+      params[:book][:book_files_attributes].select! do |k, v|
+        v.is_a?(Hash) && v[:file].present?
+      end
     end
 end
