@@ -126,7 +126,7 @@ class BooksController < ApplicationController
     end
 
     def delete_empty_book_files
-      params[:book][:book_files_attributes].select! do |k, v|
+      params[:book][:book_files_attributes] && params[:book][:book_files_attributes].select! do |k, v|
         v.is_a?(Hash) && v[:file].present?
       end
     end
