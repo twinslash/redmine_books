@@ -14,7 +14,7 @@ ru:
   user_books_action_add_book: Создать книгу
   user_books_action_delete_book: Удалить книгу
   user_books_action_take_book: Взять книгу
-  user_books_action_return_book: Возвратить книгу
+  user_books_action_give_book: Возвратить книгу
 
   notice_book_deleted: "Книга '%{title}' удалена"
   notice_book_saved: Книга успешно сохранена

@@ -42,7 +42,7 @@ module RedmineBooks
             when "take_book", "take"
               action = "take_book"
               (@user_books_permission.allows?(action) || admin?) && book.is_a?(Book) && book.free?
-            when "return_book", "give"
+            when "return_book", "return", "give"
               book.is_a?(Book) && book.busy? && (book.user == self)
             when "delete_book", "destroy"
               action = "delete_book"

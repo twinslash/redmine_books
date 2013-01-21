@@ -10,8 +10,4 @@ class Book < ActiveRecord::Base
   belongs_to :user
   validates :title, :author, presence: true, length: { in: 2..100 }
   accepts_nested_attributes_for :book_files, allow_destroy: :true
-
-  def last_take
-    book_records.order(:taken_at).last.user
-  end
 end

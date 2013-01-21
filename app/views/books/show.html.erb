@@ -3,29 +3,30 @@
 <% end %>
 
 <div class="contextual">
-  <%= render 'menu', book: @book %>
+  <% ["take", "give", "edit", "delete"].each do |action| %>
+    <%= link_to_action action, @book %>
+  <% end %>
 </div>
 
-<div  class="book-show">
-  <%= render 'book_status', book: @book %>
-  <div  style="float:right;padding:6px 10px;">
-    <div class="book-show-photo">
-      <%= photo_for @book, :original, width: "450px;" %>
-    </div>
+<div class="book">
+  <div class="book-photo">
+      <%= photo_for @book, :original, width: "350px;" %>
   </div>
-  <div class="book-show-content">
+  <div class="book-info">
     <b class="book-attribute"><%= l("book.title") %>:</b>
-    <%= @book.title %><br>
+    <%= @book.title %></br>
     <b class="book-attribute"><%= l("book.author") %>:</b>
-    <%= @book.author %><br>
+    <%= @book.author %></br>
+    <b class="book-attribute"><%= l("book.status") %>:</b>
+    <%= render 'book_status', book: @book %></br>
     <% unless @book.description.blank? %>
       <b class="book-attribute"><%= l("book.description") %>:</b>
-      <p class="book-show-description"><%= textilizable(@book.description) %></p>
+      <p class="book-description"><%= textilizable(@book.description) %></p>
     <% end %>
     <% unless @book.book_files.blank? %>
       <b class="book-attribute"><%= l("book.files") %>:</b></br>
       <% @book.book_files.each do |book_file| %>
-        <%= link_to truncate(book_file.file_url.split('/').last, length: 48), book_file.file_url if book_file.file_url %></br>
+        <%= link_to book_file.file_url.split('/').last, book_file.file_url if book_file.file_url %></br>
       <% end %>
     <% end %>
   </div>

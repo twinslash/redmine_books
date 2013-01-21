@@ -8,9 +8,9 @@
 <% end %>
 <% if @books.any? %>
   <%= pagination_links_full @books_pages, @books_count %>
-  <table class="books-table">
+  <div class="books">
     <%= render @books %>
-  </table>
+  </div>
   <%= pagination_links_full @books_pages, @books_count %>
 <% else %>
   <p class="nodata" style="clear:both;"><%= l(:label_no_data) %></p>

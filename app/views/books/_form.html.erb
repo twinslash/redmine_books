@@ -22,13 +22,7 @@
         <%= f.text_field :author, size: 69, required: true %>
       </p>
     <div class="book-form-photo-group">
-      <div id="photo" class="book-form-photo">
-        <% if @book.photo.present? %>
-          <%= photo_for @book, :original, width: "430px" %>
-        <% else %>
-          <%= render "fake_photo" %>
-        <% end %>
-      </div>
+      <%= photo_for @book, :original, height: "110px", id: "photo", wrapper: { id: "photo_wrapper", style: "border:1px solid gray" } %>
       <%= f.label :photo %>
       <%= f.file_field :photo %>
     </div>

@@ -1,6 +1,5 @@
-<div class="book-status"><%= book.status %></div>
-<% if book.busy? %>
-  <div class="book-current-user">
-    <%= "#{l('book.current_user')}: #{book.user && book.user.name}" %>
-  </div>
+<%= l("enumerize.status.#{book.status}") %>
+<% if book.busy? && book.user %>
+  (<%= l('book.current_user') %>:
+  <%= link_to book.user.name, user_path(book.user) %>)
 <% end %>

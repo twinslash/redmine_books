@@ -2,58 +2,28 @@
   margin-left: 180px;
 }
 
-.book-form-photo {
-  padding: 10px;
-  border: 1px solid gray;
+.book {
+  width: 60%;
+  margin-top: 6px;
+  margin-left: 20%;
+  border: 1px solid #AAA;
   border-radius: 3px;
-  width: 430px;
-}
-
-.book-form-fake-photo {
-  background: #DDD;
-  height: 430px;
-}
-
-.book-show {
-  width: 80%;
-  margin-top: 5px;
-  margin-left: 10%;
-  display: inline-block;
-  border: 1px solid gray;
   clear: both;
-}
-
-.book-status {
-  margin: 0;
-  padding: 0;
-  border-bottom: 3px double gray;
-  border-right: 3px double gray;
-  float: left;
-  color: blue;
-  font-size: 1.2em;
-  background: #DDD;
+  overflow: hidden;
 }
 
 .book-current-user {
   display: inline;
-  padding: 3px;
-  margin: 0;
-  float: left;
   color: #999;
 }
 
-.book-show-photo {
-  display: table-cell;
-  vertical-align: middle;
-  max-width: 450px;
-  max-height: 450px;
-  text-align: center;
-  padding: 0;
+.book-photo {
+  float: right;
+  padding: 6px 10px;
 }
 
-.book-show-content {
-  margin: 3%;
-  width: 45%;
+.book-info {
+  padding: 2%;
 }
 
 .book-attribute {
@@ -61,7 +31,7 @@
   line-height: 150%;
 }
 
-.book-show-description {
+.book-description {
   margin: 0;
   padding: 0;
   text-indent: 5%;
@@ -75,51 +45,83 @@
   font-family: Verdana, Geneva, Arial, Helvetica;
   border-radius: 3px 3px 0 0;
   color: gray;
-  background:#EEE; padding: 6px 0;
+  background:#EEE;
+  padding: 6px 0;
 }
 
-.books-table {
-  width: 80%;
-  margin: 0 auto;
+.books {
+  overflow: hidden;
+  margin-top: 10px;
 }
 
-.books-photo-cell {
-  height: 200px;
-  vertical-align: top;
-  padding: 5px 10px;
+.books-book {
+  float: left;
+  width: 40%;
+  padding: 3px;
+  border: solid 1px #D5D5D5;
+  margin: 0 0 1px 5%;
+  height: 134px;
+  overflow: hidden;
 }
 
-.books-photo {
-  height: 200px;
+.books-book-status {
+  border-radius: 5px;
+  padding: 1px 3px;
+  margin: 1px;
+}
+
+.books-book-status-ebook {
+  background: #c8c8ff;
+}
+
+.books-book-status-will_be_purchased {
+  background: #ffffc8;
+}
+
+.books-book-status-free {
+  background: #c8ffc8;
+}
+
+.books-book-status-busy {
+  background: #ffc8c8;
+}
+
+.books-book-actions-take {
+  margin-right: 1%;
+}
+
+.books-book-photo {
+  float: left;
+  margin: 3px 0;
+  max-width: 24%;
+  overflow: hidden;
+}
+
+.books-book-info {
+  width: 73%;
+  float: left;
+  margin-left: 10px;
+}
+
+.books-book-info-cell {
   display: table-cell;
   vertical-align: middle;
+  height: 116px;
+  overflow: hidden;
 }
 
-.books-info-cell {
-  width: 100%;
-  font-size: 11px;
-  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-  padding: 5px 10px;
+.books-book-title {
+  font-size: 12px;
 }
 
-.books-link {
-  display: block;
-  font-weight: bold;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+.books-book-author {
+  font-size: 10px;
+  font-style: italic;
+  font-weight: normal;
 }
 
-.books-link a {
-  color: #034B83;
-}
-
-.books-link a:hover {
-  color: #034B83;
-  text-decoration: underline;
-}
-
-.books-separator {
-  border-top: 1px solid #6495BB;
+.books-book-actions-edit {
+  margin-top: 6px;
 }
 
 #users_books_permissions_form fieldset label {
@@ -131,5 +133,5 @@
   overflow: auto;
 }
 
-a.icon-take-book { background-image: url(../images/take_book_icon.png); }
-a.icon-return-book { background-image: url(../images/return_book_icon.png); }
+a.icon-take { background-image: url(../images/take_book_icon.png); }
+a.icon-give { background-image: url(../images/give_book_icon.png); }

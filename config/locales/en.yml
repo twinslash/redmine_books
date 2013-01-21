@@ -14,7 +14,7 @@ en:
   user_books_action_add_book: Add book
   user_books_action_delete_book: Delete book
   user_books_action_take_book: Take book
-  user_books_action_return_book: Return book
+  user_books_action_give_book: Return book
 
   notice_book_deleting: "Book '%{title}' deleted"
   notice_book_saved: Book successfully saved
@@ -51,7 +51,7 @@ en:
   enumerize:
     status:
       ebook: E-book
-      will_be_purchased: Will be purchesed
+      will_be_purchased: Will be purchased
       busy: Busy
       free: Free
   nested_form:

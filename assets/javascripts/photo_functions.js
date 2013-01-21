@@ -5,6 +5,7 @@ $(document).ready( function () {
         var formData = new FormData($("form#book_form")[0]);
         var uploadTime, startUploadTime = new Date().getTime();
         var onbeforeunload = window.onbeforeunload;
+        var photo;
         window.onbeforeunload = deletePhoto;
         $.ajax({
             url: '/books/upload_photo?photo_name=' + photoName,
@@ -25,11 +26,19 @@ $(document).ready( function () {
             contentType: false,
             processData: false
         });
+
+        function beforeSendHandler() {
+            photo = $('#photo')[0];
+            $('#photo').replaceWith("<progress style='display:block;margin:auto;width:90px;' id='photo'></progress>");
+        }
+
         function loadListener(e) {
             uploadTime = new Date().getTime() - startUploadTime;
-            $('#photo').replaceWith("<img src='/tmp/" + photoName +  "' id='photo' class='book-form-photo'/>");
+            photo.src = '/tmp/' + photoName;
+            $('#photo').replaceWith(photo);
             setTimeout(deletePhoto, uploadTime);
         }
+
         function deletePhoto() {
             $.ajax( {
                 url: '/books//delete_photo?photo_name=' + photoName,
@@ -49,8 +58,3 @@ function progressHandlingFunction(e) {
         $('progress').attr({ value: e.loaded, max: e.total});
     }
 }
-
-function beforeSendHandler() {
-    $('#photo').replaceWith("<div class='book-form-photo book-form-fake-photo' id='photo'><progress style='position:relative;left:35%;top:50%'></progress></div>");
-}
-
