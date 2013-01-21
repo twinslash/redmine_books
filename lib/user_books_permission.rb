@@ -1,7 +1,7 @@
 class UserBooksPermission
   attr_accessor :user_id, :actions
 
-  def initialize user_id, actions
+  def initialize(user_id, actions)
     @user_id = user_id
     @actions = actions
   end
@@ -13,7 +13,7 @@ class UserBooksPermission
     end.compact
   end
 
-  def self.create user_id, actions
+  def self.create(user_id, actions)
     new(user_id, actions).instance_eval do
       return false unless validates_user_id!
       return false unless validates_actions!
@@ -21,17 +21,17 @@ class UserBooksPermission
     end
   end
 
-  def self.delete user_id
+  def self.delete(user_id)
     permission = find(user_id)
     permission.delete if permission
   end
 
-  def self.allows? user_id, action
+  def self.allows?(user_id, action)
     permission = find(user_id)
     return permission && permission.allows?(action)
   end
 
-  def self.find user
+  def self.find(user)
     return nil unless user.is_a?(User) || User.find_by_id(user)
     user_id =  if user.is_a?(User)
       user.id.to_s
@@ -54,7 +54,7 @@ class UserBooksPermission
     User.find_by_id(@user_id)
   end
 
-  def allows? action
+  def allows?(action)
     return false unless action.is_a?(String) || action.is_a?(Symbol)
     return @actions && @actions.is_a?(Array) && @actions.include?(action.to_s)
   end

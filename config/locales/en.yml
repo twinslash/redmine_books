@@ -10,13 +10,13 @@ en:
 
   link_show_history: Show book history
 
-  user_books_action_edit_book: Edit book
-  user_books_action_add_book: Add book
-  user_books_action_delete_book: Delete book
-  user_books_action_take_book: Take book
-  user_books_action_give_book: Return book
+  user_books_action_edit: Edit book
+  user_books_action_add: Add book
+  user_books_action_delete: Delete book
+  user_books_action_take: Take book
+  user_books_action_give: Return book
 
-  notice_book_deleting: "Book '%{title}' deleted"
+  notice_book_deleted: "Book '%{title}' deleted"
   notice_book_saved: Book successfully saved
   notice_book_updated: Book successfully updated
   notice_book_taken: "You have successfully taken the book '%{title}'"

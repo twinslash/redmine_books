@@ -10,11 +10,11 @@ ru:
 
   link_show_history:  Показать историю книги
 
-  user_books_action_edit_book: Редактировать книгу
-  user_books_action_add_book: Создать книгу
-  user_books_action_delete_book: Удалить книгу
-  user_books_action_take_book: Взять книгу
-  user_books_action_give_book: Возвратить книгу
+  user_books_action_edit: Редактировать книгу
+  user_books_action_add: Создать книгу
+  user_books_action_delete: Удалить книгу
+  user_books_action_take: Взять книгу
+  user_books_action_give: Возвратить книгу
 
   notice_book_deleted: "Книга '%{title}' удалена"
   notice_book_saved: Книга успешно сохранена

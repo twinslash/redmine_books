@@ -44,7 +44,7 @@ class BooksController < ApplicationController
 
   def destroy
     if @book.destroy
-      flash[:notice] = l('notice_book_deleting', title: @book.title)
+      flash[:notice] = l('notice_book_deleted', title: @book.title)
     else
       flash[:error] = l('error_book_deleting', title: @book.title)
     end

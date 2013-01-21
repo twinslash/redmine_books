@@ -26,7 +26,7 @@ module RedmineBooks
 
       module InstanceMethods
 
-        def allowed_books_to? action, book = nil
+        def allowed_books_to?(action, book = nil)
           @user_books_permission ||= UserBooksPermission.find(self)
           action = action.to_s
           return true if admin? && ["take", "give"].exclude?(action)

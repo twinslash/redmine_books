@@ -10,7 +10,7 @@ module RedmineBooks
     [:edit, :add, :delete, :take]
   end
 
-  def self.include_action? action
+  def self.include_action?(action)
     available_user_books_actions.include? action
   end
 

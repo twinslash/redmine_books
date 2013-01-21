@@ -1,5 +1,5 @@
 module BooksHelper
-  def photo_for book, style = :medium, options = {}
+  def photo_for(book, style = :medium, options = {})
     height = options[:height] || options[:width]
     width = options[:width] || options[:height]
     options.delete(:width)
@@ -20,18 +20,18 @@ module BooksHelper
     photo.html_safe
   end
 
-  def link_to_action action, book, options = {}
+  def link_to_action(action, book, options = {})
     if User.current.allowed_books_to? action, book
       case action
         when "delete"
-          link_to l('user_books_action_delete_book'), book_path(book), { class: 'icon icon-del', method: :delete, data: { confirm: l(:text_are_you_sure) } }.merge(options)
+          link_to l("user_books_action_#{action}"), book_path(book), { method: :delete, data: { onfirm: l(:text_are_you_sure) }, class: 'icon icon-del' }.merge(options)
         else
-          link_to l("user_books_action_#{action}_book"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
+          link_to l("user_books_action_#{action}"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
       end
     end
   end
 
-  def link_to_actions actions, book, options = {}
+  def link_to_actions(actions, book, options = {})
     links = ""
     actions.each do |action|
       links += link_to_action(action, book, options).to_s
