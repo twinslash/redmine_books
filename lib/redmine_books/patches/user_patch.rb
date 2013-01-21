@@ -29,7 +29,7 @@ module RedmineBooks
         def allowed_books_to? action, book = nil
           @user_books_permission ||= UserBooksPermission.find(self)
           action = action.to_s
-          return true if admin? && ["take_book", "take", "return_book", "give"].exclude?(action)
+          return true if admin? && ["take", "give"].exclude?(action)
           allowed = case action
             when "add", "new", "create"
               action = "add"
@@ -39,7 +39,7 @@ module RedmineBooks
               @user_books_permission.allows? action
             when "take"
               (@user_books_permission.allows?(action) || admin?) && book.is_a?(Book) && book.free?
-            when "return", "give"
+            when "give"
               book.is_a?(Book) && book.busy? && (book.user == self)
             when "delete", "destroy"
               action = "delete"
