@@ -17,9 +17,7 @@ module RedmineBooks
           before_destroy :does_not_have_books?
           private
             def does_not_have_books?
-              books.each do |book|
-                return false if book.busy?
-              end
+              return false if self.books.where(status: "busy").any?
               UserBooksPermission.delete id
               return true
             end
@@ -33,24 +31,22 @@ module RedmineBooks
           action = action.to_s
           return true if admin? && ["take_book", "take", "return_book", "give"].exclude?(action)
           allowed = case action
-            when "add_book", "new", "create"
-              action = "add_book"
+            when "add", "new", "create"
+              action = "add"
               @user_books_permission.allows? action
-            when "edit_book", "edit", "update"
-              action = "edit_book"
+            when "edit", "update"
+              action = "edit"
               @user_books_permission.allows? action
-            when "take_book", "take"
-              action = "take_book"
+            when "take"
               (@user_books_permission.allows?(action) || admin?) && book.is_a?(Book) && book.free?
-            when "return_book", "return", "give"
+            when "return", "give"
               book.is_a?(Book) && book.busy? && (book.user == self)
-            when "delete_book", "destroy"
-              action = "delete_book"
+            when "delete", "destroy"
+              action = "delete"
               @user_books_permission.allows? action
             else
               false
             end
-          return allowed
         end
 
       end
