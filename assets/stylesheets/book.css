@@ -12,11 +12,6 @@
   overflow: hidden;
 }
 
-.book-current-user {
-  display: inline;
-  color: #999;
-}
-
 .book-photo {
   float: right;
   padding: 6px 10px;
@@ -43,7 +38,7 @@
   width: 100%;
   text-align: center;
   font-family: Verdana, Geneva, Arial, Helvetica;
-  border-radius: 3px 3px 0 0;
+  border-radius: 3px;
   color: gray;
   background:#EEE;
   padding: 6px 0;

@@ -23,10 +23,10 @@ module BooksHelper
   def link_to_action(action, book, options = {})
     if User.current.allowed_books_to? action, book
       case action
-        when "delete"
-          link_to l("user_books_action_#{action}"), book_path(book), { method: :delete, data: { onfirm: l(:text_are_you_sure) }, class: 'icon icon-del' }.merge(options)
-        else
-          link_to l("user_books_action_#{action}"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
+      when "delete"
+        link_to l("user_books_action_#{action}"), book_path(book), { method: :delete, data: { onfirm: l(:text_are_you_sure) }, class: 'icon icon-del' }.merge(options)
+      else
+        link_to l("user_books_action_#{action}"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
       end
     end
   end
