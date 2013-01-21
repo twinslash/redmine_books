@@ -13,7 +13,7 @@ module BooksHelper
       url = book.photo.url(style)
     else
       options[:style] += "max-width:100px;max-height:100px;"
-      url = '/plugin_assets/redmine_books/images/image_missing_icon.jpg'
+      url = '/plugin_assets/redmine_books/images/image_missing_icon.png'
     end
     photo += image_tag(url, options)
     photo += "</div>"
