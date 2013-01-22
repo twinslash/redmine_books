@@ -3,9 +3,9 @@
 }
 
 .book {
-  width: 60%;
+  width: 70%;
   margin-top: 6px;
-  margin-left: 20%;
+  margin-left: 15%;
   border: 1px solid #AAA;
   border-radius: 3px;
   clear: both;
@@ -51,10 +51,10 @@
 
 .books-book {
   float: left;
-  width: 40%;
+  width: 45%;
   padding: 3px;
   border: solid 1px #D5D5D5;
-  margin: 0 0 1px 5%;
+  margin: 0 0 1px 3%;
   height: 134px;
   overflow: hidden;
 }
