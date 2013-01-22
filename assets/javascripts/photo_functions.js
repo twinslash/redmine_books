@@ -35,6 +35,9 @@ $(document).ready( function () {
         function loadListener(e) {
             uploadTime = new Date().getTime() - startUploadTime;
             photo.src = '/tmp/' + photoName;
+            var photoWrapper = $('#photo_wrapper')[0];
+            photo.style.maxWidth = photoWrapper.style.width;
+            photo.style.maxHeight = photoWrapper.style.height;
             $('#photo').replaceWith(photo);
             setTimeout(deletePhoto, uploadTime);
         }
