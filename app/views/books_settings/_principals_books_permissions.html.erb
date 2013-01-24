@@ -1,0 +1,23 @@
+<% if principals_books_permissions.any? %>
+  <% principal ||= "principal" %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= l("label_#{principal}") %></th>
+        <th><%= l(:label_permissions) %></th>
+        <th style="width:15%"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% principals_books_permissions.each do |principal_books_permission| %>
+      <tr id="principal-<%= principal_books_permission.principal.id %>" class="<%= cycle 'odd', 'even' %>">
+        <td><%= link_to_user principal_books_permission.principal %></td>
+        <td><%= principal_books_permission.actions.map {|action| l_or_humanize action, prefix: 'principal_books_action_'}.join(', ') %></td>
+        <td class="buttons">
+          <%= delete_link url_for({ controller: :books_settings, action: :destroy, id: principal_books_permission.principal}), remote: true %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

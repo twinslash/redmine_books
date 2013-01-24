@@ -3,12 +3,8 @@
 }
 
 .book {
-  width: 70%;
-  margin-top: 6px;
-  margin-left: 15%;
   border: 1px solid #AAA;
   border-radius: 3px;
-  clear: both;
   overflow: hidden;
 }
 
@@ -40,7 +36,7 @@
   font-family: Verdana, Geneva, Arial, Helvetica;
   border-radius: 3px;
   color: gray;
-  background:#EEE;
+  background: #EEE;
   padding: 6px 0;
 }
 
@@ -130,3 +126,4 @@
 
 a.icon-take { background-image: url(../images/take_book_icon.png); }
 a.icon-give { background-image: url(../images/give_book_icon.png); }
+a.icon-give_instead_user { background-image: url(../images/give_book_instead_user_icon.png); }

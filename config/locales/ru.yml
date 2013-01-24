@@ -7,20 +7,23 @@ ru:
   label_action_plural: Действия
   label_book_new: Новая книга
   label_book_edit: Правка книги
+  label_group_search: "Найти группу:"
+  label_principal: Принципал
 
   link_show_history:  Показать историю книги
 
-  user_books_action_edit: Редактировать книгу
-  user_books_action_add: Создать книгу
-  user_books_action_delete: Удалить книгу
-  user_books_action_take: Взять книгу
-  user_books_action_give: Возвратить книгу
+  principal_books_action_edit: Редактировать книгу
+  principal_books_action_add: Создать книгу
+  principal_books_action_delete: Удалить книгу
+  principal_books_action_take: Взять книгу
+  principal_books_action_give: Возвратить книгу
+  principal_books_action_give_instead_user: Возвратить книгу вместо пользоветеля
 
   notice_book_deleted: "Книга '%{title}' удалена"
   notice_book_saved: Книга успешно сохранена
   notice_book_updated: Книга успешно обновлена
   notice_book_taken: "Вы успешно взяли книгу '%{title}'"
-  notice_book_returned: "Вы успешно вернули книгу %{title}"
+  notice_book_returned: "Вы успешно вернули книгу '%{title}'"
 
   error_book_deleting: "Произошла ошбка при удалении книги '%{title}'"
   error_book_taking: "Произошла ошибка. Вы не взяли книгу '%{title}'"
@@ -42,12 +45,16 @@ ru:
         files: Файлы
   book:
     new: Добавить новую книгу
-    taken_by: Кто брал
-    taken_at: Взял(дата)
-    returned_at: Вернул(дата)
-    empty_history: История пуста
     current_user: текущий пользователь
+    empty_history: История пуста
     <<: *book_labels
+
+  book_record:
+    taken_by: Кто брал
+    taken_at: Когда взял
+    returned_at: Когда вернул
+    returned_by: Кто вернул
+
   enumerize:
     status:
       ebook:  Электронная книга

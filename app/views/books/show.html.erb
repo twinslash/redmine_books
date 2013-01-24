@@ -3,18 +3,18 @@
 <% end %>
 
 <div class="contextual">
-  <% ["take", "give", "edit", "delete"].each do |action| %>
+  <%= link_to l(:button_back), books_path, class: "icon icon-cancel" %>
+  <% ["take", "give", "give_instead_user", "edit", "delete"].each do |action| %>
     <%= link_to_action action, @book %>
   <% end %>
 </div>
+<h2><%= @book.title %></h2>
 
 <div class="book">
   <div class="book-photo">
-      <%= photo_for @book, :original, width: "350px;" %>
+      <%= photo_for @book, :original, width: "450px;" %>
   </div>
   <div class="book-info">
-    <b class="book-attribute"><%= l("book.title") %>:</b>
-    <%= @book.title %></br>
     <b class="book-attribute"><%= l("book.author") %>:</b>
     <%= @book.author %></br>
     <b class="book-attribute"><%= l("book.status") %>:</b>

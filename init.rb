@@ -8,7 +8,7 @@ Redmine::Plugin.register :redmine_books do
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
 
-  settings default: { users_books_permissions: {} }
+  settings default: { principals_books_permissions: {} }
   menu :admin_menu, :books, {controller: 'books_settings', action: 'index'}, caption: :label_books
   menu :top_menu, :books, {controller: 'books', action: 'index'}, caption: :label_books
 end

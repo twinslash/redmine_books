@@ -1,4 +1,4 @@
-$('#users_books_permissions').html('<%= escape_javascript(render partial: 'users_books_permissions') %>');
-<% @user_ids.each do |user_id| %>
-  $('#user-<%= user_id %>').effect("highlight");
+$('#principals_books_permissions').html('<%= escape_javascript render('books_permissions') %>');
+<% @principals_ids.each do |principal_id| %>
+  $('#principal-<%= principal_id %>').effect("highlight");
 <% end %>

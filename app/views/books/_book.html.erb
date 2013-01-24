@@ -1,7 +1,7 @@
 <div id=<%= "book_#{ book.id }" %> class="books-book">
   <div <%= "class='books-book-status books-book-status-#{book.status}'".html_safe %>> <%= render "book_status", book: book %>
     <div style="float: right;" class="books-book-actions-take">
-      <%= link_to_actions ["take", "give"], book, remote: true %>
+      <%= link_to_actions ["take", "give", "give_instead_user"], book, remote: true %>
     </div>
   </div>
   <div class="books-book-photo">

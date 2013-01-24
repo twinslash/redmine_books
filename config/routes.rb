@@ -2,6 +2,7 @@ resources :books do
   member do
     get 'take'
     get 'give'
+    get 'give_instead_user'
     get 'load_history'
   end
   collection do

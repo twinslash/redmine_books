@@ -6,6 +6,7 @@
     <%= link_to l('book.new'), new_book_path, class: 'icon icon-add' %>
   </div>
 <% end %>
+<h2><%= l(:label_books) %></h2>
 <% if @books.any? %>
   <%= pagination_links_full @books_pages, @books_count %>
   <div class="books">

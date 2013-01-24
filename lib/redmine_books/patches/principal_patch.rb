@@ -5,7 +5,7 @@ require_dependency 'user'
 module RedmineBooks
   module Patches
 
-    module UserPatch
+    module PrincipalPatch
       def self.included(base)
         base.send(:include, InstanceMethods)
 
@@ -18,7 +18,7 @@ module RedmineBooks
           private
             def does_not_have_books?
               return false if self.books.where(status: "busy").any?
-              UserBooksPermission.delete id
+              PrincipalBooksPermission.delete id
               return true
             end
         end
@@ -27,23 +27,29 @@ module RedmineBooks
       module InstanceMethods
 
         def allowed_books_to?(action, book = nil)
-          @user_books_permission ||= UserBooksPermission.find(self)
           action = action.to_s
-          return true if admin? && ["take", "give"].exclude?(action)
+          unless @user_books_permission
+            @user_books_permission = PrincipalBooksPermission.find(self)
+            self.groups.each do |group|
+              @user_books_permission << PrincipalBooksPermission.find(group)
+            end
+          end
           allowed = case action
             when "add", "new", "create"
               action = "add"
-              @user_books_permission.allows? action
+              admin? || @user_books_permission.allows?(action)
             when "edit", "update"
               action = "edit"
-              @user_books_permission.allows? action
+              admin? || @user_books_permission.allows?(action)
             when "take"
               (@user_books_permission.allows?(action) || admin?) && book.is_a?(Book) && book.free?
             when "give"
               book.is_a?(Book) && book.busy? && (book.user == self)
+            when "give_instead_user"
+              (admin? || @user_books_permission.allows?(action)) && book.is_a?(Book) && book.busy? && book.user && (book.user != self)
             when "delete", "destroy"
               action = "delete"
-              @user_books_permission.allows? action
+              admin? || @user_books_permission.allows?(action)
             else
               false
             end
@@ -55,6 +61,6 @@ module RedmineBooks
   end
 end
 
-unless User.included_modules.include?(RedmineBooks::Patches::UserPatch)
-  User.send(:include, RedmineBooks::Patches::UserPatch)
+unless Principal.included_modules.include?(RedmineBooks::Patches::PrincipalPatch)
+  Principal.send(:include, RedmineBooks::Patches::PrincipalPatch)
 end

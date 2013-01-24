@@ -1,22 +1,22 @@
-require 'user_books_permission'
+require 'principal_books_permission'
 
 Rails.configuration.to_prepare do
   require_dependency 'redmine_books/hooks/view_layouts_hook'
-  require_dependency 'redmine_books/patches/user_patch'
+  require_dependency 'redmine_books/patches/principal_patch'
 end
 
 module RedmineBooks
-  def self.available_user_books_actions
-    [:edit, :add, :delete, :take]
+  def self.available_principal_books_actions
+    [:edit, :add, :delete, :take, :give_instead_user]
   end
 
   def self.include_action?(action)
-    available_user_books_actions.include? action
+    action.respond_to?(:to_sym) && available_principal_books_actions.include?(action.to_sym)
   end
 
   def self.settings() Setting[:plugin_redmine_books] end
 
-  def self.users_books_permissions() Setting.plugin_redmine_books[:users_books_permissions] || {} end
+  def self.principals_books_permissions() Setting.plugin_redmine_books[:principals_books_permissions] || {} end
 
   def self.url_exists?(url)
     require_dependensy 'open-uri'

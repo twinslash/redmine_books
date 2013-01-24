@@ -15,8 +15,8 @@ module BooksHelper
       options[:style] += "max-width:100px;max-height:100px;"
       url = '/plugin_assets/redmine_books/images/image_missing_icon.png'
     end
-    photo += image_tag(url, options)
-    photo += "</div>"
+    photo << image_tag(url, options)
+    photo << '</div>'
     photo.html_safe
   end
 
@@ -24,9 +24,9 @@ module BooksHelper
     if User.current.allowed_books_to? action, book
       case action
       when "delete"
-        link_to l("user_books_action_#{action}"), book_path(book), { method: :delete, data: { confirm: l(:text_are_you_sure) }, class: 'icon icon-del' }.merge(options)
+        link_to l("principal_books_action_#{action}"), book_path(book), { method: :delete, data: { confirm: l(:text_are_you_sure) }, class: 'icon icon-del' }.merge(options)
       else
-        link_to l("user_books_action_#{action}"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
+        link_to l("principal_books_action_#{action}"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
       end
     end
   end

@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   unloadable
-  before_filter :check_permission, only: [:new, :create, :edit, :update, :take, :give, :destroy]
+  before_filter :check_permission, only: [:new, :create, :edit, :update, :take, :give, :give_instead_user, :destroy]
   before_filter :assembly_photo_path, only: [:upload_photo, :delete_photo]
   before_filter :delete_empty_book_files, only: [:create, :update]
 
@@ -69,12 +69,12 @@ class BooksController < ApplicationController
   end
 
   def take
+    @book_record = BookRecord.new(user: User.current, book: @book, taken_at: Date.today)
     @book.status = :busy
-    @book_record = BookRecord.new(user_id: User.current.id, book_id: params[:id], taken_at: Date.today)
     @book.user = User.current
-    if @book_record.save
+    @book.current_book_record = @book_record
+    if @book_record.save && @book.save
       flash[:notice] = l(:notice_book_taken, title: @book.title)
-      @book.save
     else
       flash[:error] = l(:error_book_taking, title: @book.title)
     end
@@ -86,12 +86,15 @@ class BooksController < ApplicationController
 
   def give
     @book.status = :free
-    @book_record = BookRecord.where(user_id: User.current.id, book_id: params[:id], returned_at: nil).last_by_taken_at
-    @book_record.returned_at = Date.today
     @book.user = nil
-    if @book_record.save
+    @book_record = @book.current_book_record
+    @book.current_book_record = nil
+    if @book.save
+      if @book_record
+        @book_record.attributes = { returned_at: Date.today, returned_by: User.current }
+        @book_record.save
+      end
       flash[:notice] = l(:notice_book_returned, title: @book.title)
-      @book.save
     else
       flash[:error] = l(:error_book_returning, title: @book.title)
     end
@@ -100,6 +103,8 @@ class BooksController < ApplicationController
       format.js { render 'update_book_on_index' }
     end
   end
+
+  alias_method :give_instead_user, :give
 
   def load_history
     @book = Book.find(params[:id])
@@ -110,24 +115,25 @@ class BooksController < ApplicationController
   end
 
   private
-    def check_permission
-      action = params[:action]
-      @book = Book.find(params[:id]) if params[:id]
-      @book ||= Book.new
-      if User.current.allowed_books_to? action, @book
-        true
-      else
-        deny_access
-      end
-    end
 
-    def assembly_photo_path
-      @photo_path = Rails.root.to_path + "/public/tmp/" + params[:photo_name].to_s.split('/').join('_')
+  def check_permission
+    action = params[:action]
+    @book = Book.find(params[:id]) if params[:id]
+    @book ||= Book.new
+    if User.current.allowed_books_to? action, @book
+      true
+    else
+      deny_access
     end
+  end
 
-    def delete_empty_book_files
-      params[:book][:book_files_attributes] && params[:book][:book_files_attributes].select! do |_, v|
-        v.is_a?(Hash) && v[:file].present?
-      end
+  def assembly_photo_path
+    @photo_path = Rails.root.to_path + "/public/tmp/" + params[:photo_name].to_s.split('/').join('_')
+  end
+
+  def delete_empty_book_files
+    params[:book][:book_files_attributes] && params[:book][:book_files_attributes].select! do |_, v|
+      v.is_a?(Hash) && v[:file].present?
     end
+  end
 end

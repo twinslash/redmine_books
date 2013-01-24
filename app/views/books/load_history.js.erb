@@ -1,5 +1,5 @@
 <% if @book_records.any? %>
-  $('#book_history').replaceWith("<table id='book_history' cellspacing='10' cellpadding='10%'><thead><tr><th><%= l('book.taken_by') %></th><th><%= l('book.taken_at') %></th><th><%= l('book.returned_at') %></th></tr></thead><%= escape_javascript render partial: 'book_record', collection: @book_records %></table>")
+  $('#book_history').replaceWith("<table id='book_history' cellspacing='10' cellpadding='10%'><thead><tr><th><%= l('book_record.taken_by') %></th><th><%= l('book_record.taken_at') %></th><th><%= l('book_record.returned_at') %></th><th><%= l('book_record.returned_by') %></th></tr></thead><%= escape_javascript render partial: 'book_record', collection: @book_records %></table>")
 <% else %>
   $('#book_history').replaceWith("<div id='book_history'><%= l('book.empty_history') %></div>")
 <% end %>

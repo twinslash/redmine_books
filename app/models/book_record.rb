@@ -1,7 +1,6 @@
 class BookRecord < ActiveRecord::Base
   belongs_to :book, include: :user
   belongs_to :user
-  def self.last_by_taken_at
-    order("taken_at DESC").first
-  end
+  belongs_to :returned_by, class_name: "User"
+  validates :user, :book, :taken_at, presence: true
 end

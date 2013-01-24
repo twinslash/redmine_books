@@ -7,14 +7,17 @@ en:
   label_action_plural: Actions
   label_book_new: New book
   label_book_edit: Edit book
+  label_group_search: "Search for group:"
+  label_principal: Principal
 
   link_show_history: Show book history
 
-  user_books_action_edit: Edit book
-  user_books_action_add: Add book
-  user_books_action_delete: Delete book
-  user_books_action_take: Take book
-  user_books_action_give: Return book
+  principal_books_action_edit: Edit book
+  principal_books_action_add: Add book
+  principal_books_action_delete: Delete book
+  principal_books_action_take: Take book
+  principal_books_action_give: Return book
+  principal_books_action_give_instead_user: Return book instead user
 
   notice_book_deleted: "Book '%{title}' deleted"
   notice_book_saved: Book successfully saved
@@ -42,12 +45,16 @@ en:
         files: Files
   book:
     new: Add new book
-    taken_by: Who took
-    taken_at: Took(date)
-    returned_at: Return(date)
-    empty_history: History is empty
     current_user: current user
+    empty_history: History is empty
     <<: *book_labels
+
+  book_record:
+    taken_by: Who took
+    taken_at: When took
+    returned_at: When returned
+    returned_by: Who return
+
   enumerize:
     status:
       ebook: E-book
