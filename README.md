@@ -2,7 +2,7 @@
 
 Plugin for accounting books
 
-* Maintainer: Dmitry Kovalkenok, [Hirurg103](https://github.com/Hirurg103)
+* Maintainer: Dmitry Kovalenok, [Hirurg103](https://github.com/Hirurg103)
 * Contact: Report questions, bugs or feature requests on the [IssueTracker](https://github.com/twinslash/redmine_books/issues) or get in touch with me at [dzm.kov@gmail.com](mailto:dzm.kov@gmail.com)
 
 ## Istallation
@@ -19,9 +19,11 @@ Restart server.
 
 ##Permission configuration
 
-* Login as administrator.
-* Click on the "Administration" link menu on top panel. Click "Books".
-* Choose users, groups and actions that you want to allow to them.
+1) Login as administrator.
+
+2) Click on the "Administration" link menu on top panel. Click "Books".
+
+3) Choose users, groups and actions that you want to allow to them.
 
 ![](http://farm9.staticflickr.com/8079/8415235260_e6f5a67d4b_c.jpg)
 
