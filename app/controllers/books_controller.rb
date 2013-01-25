@@ -34,6 +34,11 @@ class BooksController < ApplicationController
   end
 
   def update
+    # destroy current book record if book was busy and book status will update to "free" and current book record present.
+    if @book.busy? && params[:book][:status] == "free" && @book.current_book_record
+      @book.current_book_record.destroy
+    end
+
     if @book.update_attributes(params[:book])
       flash[:notice] = l(:notice_book_updated)
       redirect_to book_path @book

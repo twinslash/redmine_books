@@ -1,3 +1,0 @@
-= redmine_books
-
-Description goes here

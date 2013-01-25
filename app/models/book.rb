@@ -11,6 +11,10 @@ class Book < ActiveRecord::Base
   has_one :current_book_record, class_name: :BookRecord, conditions: ["#{BookRecord.table_name}.returned_at IS :null AND #{BookRecord.table_name}.returned_by_id IS :null", { null: nil }], include: [:user]
   validates :title, :author, presence: true, length: { in: 2..100 }
   accepts_nested_attributes_for :book_files, allow_destroy: :true
+
+  def paper?
+    free? || busy?
+  end
 end
 
 class Encyclopedia < Book

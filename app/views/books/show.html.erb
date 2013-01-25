@@ -30,5 +30,5 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to l(:link_show_history), load_history_book_path(@book), id: 'book_history', remote: true if @book.free? || @book.busy? %>
+  <%= link_to l(:link_show_history), load_history_book_path(@book), id: 'book_history', remote: true if @book.paper? %>
 </div>
