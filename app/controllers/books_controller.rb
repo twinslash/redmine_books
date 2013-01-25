@@ -69,12 +69,11 @@ class BooksController < ApplicationController
   end
 
   def take
-    @book_record = BookRecord.new(user: User.current, book: @book, taken_at: Date.today)
     @book.status = :busy
-    @book.user = User.current
-    @book.current_book_record = @book_record
-    if @book_record.save && @book.save
+    @book_record = BookRecord.new(user: User.current, book: @book, taken_at: Date.today)
+    if @book.save && @book_record.save
       flash[:notice] = l(:notice_book_taken, title: @book.title)
+      @book.reload
     else
       flash[:error] = l(:error_book_taking, title: @book.title)
     end
@@ -86,14 +85,9 @@ class BooksController < ApplicationController
 
   def give
     @book.status = :free
-    @book.user = nil
     @book_record = @book.current_book_record
-    @book.current_book_record = nil
-    if @book.save
-      if @book_record
-        @book_record.attributes = { returned_at: Date.today, returned_by: User.current }
-        @book_record.save
-      end
+    @book_record.attributes = { returned_at: Date.today, returned_by: User.current }
+    if @book.save && @book_record.save
       flash[:notice] = l(:notice_book_returned, title: @book.title)
     else
       flash[:error] = l(:error_book_returning, title: @book.title)

@@ -16,8 +16,8 @@ ru:
   principal_books_action_add: Создать книгу
   principal_books_action_delete: Удалить книгу
   principal_books_action_take: Взять книгу
-  principal_books_action_give: Возвратить книгу
-  principal_books_action_give_instead_user: Возвратить книгу вместо пользоветеля
+  principal_books_action_give: Вернуть книгу
+  principal_books_action_give_instead_user: Вернуть книгу вместо пользоветеля
 
   notice_book_deleted: "Книга '%{title}' удалена"
   notice_book_saved: Книга успешно сохранена
@@ -28,6 +28,7 @@ ru:
   error_book_deleting: "Произошла ошбка при удалении книги '%{title}'"
   error_book_taking: "Произошла ошибка. Вы не взяли книгу '%{title}'"
   error_book_returning: "Произошла ошибка. Вы не вернули книгу '%{title}'"
+  error_current_book_record_uniqueness_violation: Текущая запись для кгиги существует. Невозможно создать дгугую
 
   helpers:
     submit:

@@ -28,6 +28,7 @@ en:
   error_book_deleting: "An error occurred when removing the book '%{title}'"
   error_book_taking: "An error occurred when taking the book '%{title}'"
   error_book_returning: "An error occurred when returning the book '%{title}'"
+  error_current_book_record_uniqueness_violation: The current record for a book exists. Can not create other
 
   helpers:
     submit:
@@ -53,7 +54,7 @@ en:
     taken_by: Who took
     taken_at: When took
     returned_at: When returned
-    returned_by: Who return
+    returned_by: Who returned
 
   enumerize:
     status:

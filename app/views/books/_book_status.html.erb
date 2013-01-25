@@ -1,5 +1,5 @@
 <%= l("enumerize.status.#{book.status}") %>
-<% if book.busy? && book.user %>
+<% if book.busy? && book.current_book_record %>
   (<%= l('book.current_user') %>:
-  <%= link_to book.user.name, user_path(book.user) %>)
+  <%= link_to_user book.current_book_record.user %>)
 <% end %>

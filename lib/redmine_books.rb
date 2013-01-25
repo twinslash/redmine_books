@@ -3,6 +3,7 @@ require 'principal_books_permission'
 Rails.configuration.to_prepare do
   require_dependency 'redmine_books/hooks/view_layouts_hook'
   require_dependency 'redmine_books/patches/principal_patch'
+  require_dependency 'redmine_books/patches/user_patch'
 end
 
 module RedmineBooks
