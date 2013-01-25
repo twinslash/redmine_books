@@ -22,7 +22,8 @@ Restart server.
 * Login as administrator.
 * Click on the "Administration" link menu on top panel. Click "Books".
 * Choose users, groups and actions that you want to allow to them.
-![](http://farm9.staticflickr.com/8359/8412970727_698318b824_z.jpg)
+
+![](http://farm9.staticflickr.com/8079/8415235260_e6f5a67d4b_c.jpg)
 
 Admin has all rights by default.
 
@@ -33,11 +34,13 @@ User has permissions of groups to which he belongs.
 
 * The book can be returned by another user(if he has the right)
 
-![](http://farm9.staticflickr.com/8471/8413012085_34b5b7b279_m.jpg)
+![](http://farm9.staticflickr.com/8190/8415235350_a712c41311_c.jpg)
+
 * User can look at the history books(who took, when took, when returned, who returned)
 
-![](http://farm9.staticflickr.com/8328/8413031159_b3c4e5c445_m.jpg)
-![](http://farm9.staticflickr.com/8237/8413036661_e1171a5c00_m.jpg)
+![](http://farm9.staticflickr.com/8089/8415235588_1c5087b529_c.jpg)
+
+![](http://farm9.staticflickr.com/8352/8414138965_db111ed633_c.jpg)
 
 ## Uninstall
 
