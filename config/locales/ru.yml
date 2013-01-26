@@ -28,7 +28,6 @@ ru:
   error_book_deleting: "Произошла ошбка при удалении книги '%{title}'"
   error_book_taking: "Произошла ошибка. Вы не взяли книгу '%{title}'"
   error_book_returning: "Произошла ошибка. Вы не вернули книгу '%{title}'"
-  error_current_book_record_uniqueness_violation: Текущая запись для кгиги существует. Невозможно создать дгугую
 
   helpers:
     submit:
@@ -74,3 +73,11 @@ ru:
       wrong_size: "недопустимый размер (должен быть %{file_size})"
       size_too_small: "слишком мал (должен быть не менее %{file_size})"
       size_too_big: "слишком большой (должен быть не более %{file_size})"
+
+  activerecord:
+    errors:
+      models:
+        book:
+          attributes:
+            status:
+              must_be_busy_because_current_user_present: "должен быть 'Занята' потому что указан текущий пользователь"

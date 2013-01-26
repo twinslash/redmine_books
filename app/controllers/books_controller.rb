@@ -34,11 +34,6 @@ class BooksController < ApplicationController
   end
 
   def update
-    # destroy current book record if book was busy and book status will update to "free" and current book record present.
-    if @book.busy? && params[:book][:status] == "free" && @book.current_book_record
-      @book.current_book_record.destroy
-    end
-
     if @book.update_attributes(params[:book])
       flash[:notice] = l(:notice_book_updated)
       redirect_to book_path @book
@@ -75,10 +70,9 @@ class BooksController < ApplicationController
 
   def take
     @book.status = :busy
-    @book_record = BookRecord.new(user: User.current, book: @book, taken_at: Date.today)
-    if @book.save && @book_record.save
+    @book.create_current_book_record(user: User.current, taken_at: Date.today)
+    if @book.save
       flash[:notice] = l(:notice_book_taken, title: @book.title)
-      @book.reload
     else
       flash[:error] = l(:error_book_taking, title: @book.title)
     end
@@ -90,9 +84,8 @@ class BooksController < ApplicationController
 
   def give
     @book.status = :free
-    @book_record = @book.current_book_record
-    @book_record.attributes = { returned_at: Date.today, returned_by: User.current }
-    if @book.save && @book_record.save
+    @book.current_book_record.update_attributes(returned_at: Date.today, returned_by: User.current)
+    if @book.save
       flash[:notice] = l(:notice_book_returned, title: @book.title)
     else
       flash[:error] = l(:error_book_returning, title: @book.title)

@@ -1,6 +1,6 @@
 # Redmine Books
 
-Plugin for accounting books
+Redmine plugin for accounting books
 
 * Maintainer: Dmitry Kovalenok, [Hirurg103](https://github.com/Hirurg103)
 * Contact: Report questions, bugs or feature requests on the [IssueTracker](https://github.com/twinslash/redmine_books/issues) or get in touch with me at [dzm.kov@gmail.com](mailto:dzm.kov@gmail.com)

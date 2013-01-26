@@ -2,14 +2,22 @@ class BookRecord < ActiveRecord::Base
   belongs_to :book
   belongs_to :user
   belongs_to :returned_by, class_name: "User"
-  validate :current_book_record_for_book_must_be_uniq
   validates :user, :book, :taken_at, presence: true
+  before_save "self.book(true).busy?"
+  before_create :ensure_uniqueness_of_current_book_record_for_book
+  before_update :ensure_current_book_record_for_book
+
+  def archived?
+    returned_at.blank? && returned_by.blank?
+  end
 
   private
 
-  def current_book_record_for_book_must_be_uniq
-    if self.book && self.book.current_book_record && self.book.current_book_record != self
-      errors.add(:current_book_record_uniqueness, l(:error_current_book_record_uniqueness_violation))
-    end
+  def ensure_uniqueness_of_current_book_record_for_book
+    self.book && !self.book.current_book_record(true)
+  end
+
+  def ensure_current_book_record_for_book
+    self.book && self.book.current_book_record(true) == self
   end
 end
