@@ -61,3 +61,10 @@ Remove /redmine_books directory from /plugins directory
 cd redmine_application_path/plugins
 rm -rf redmine_books
 ```
+
+Remove all plugin gems from Gemfile.lock
+```console
+bundle install --no-deployment --without development test #instead '--no-deployment --without development test' put your specific options
+```
+
+Restart server.
