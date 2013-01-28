@@ -1,5 +1,5 @@
 class BookRecord < ActiveRecord::Base
-  belongs_to :book
+  belongs_to :book, inverse_of: :book_records
   belongs_to :user
   belongs_to :returned_by, class_name: "User"
   validates :user, :book, :taken_at, presence: true

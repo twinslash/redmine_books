@@ -9,8 +9,14 @@ Redmine plugin for accounting books
 
 Clone plugin's source code into /plugins application directory
 ```console
-git clone git@github.com:twinslash/redmine_books.git
+git clone https://github.com/twinslash/redmine_books.git
 ```
+Install all required gems. For example
+
+```console
+bundle install --no-deployment --without development test #instead '--no-deployment --without development test' put your specific options
+```
+
 Perform the migrations
 ```console
 bundle exec rake redmine:plugins:migrate NAME=redmine_books
