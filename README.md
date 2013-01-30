@@ -14,7 +14,7 @@ git clone https://github.com/twinslash/redmine_books.git
 Install all required gems. For example
 
 ```console
-bundle install --no-deployment --without development test #instead '--no-deployment --without development test' put your specific options
+bundle install --no-deployment --without development test --path vendor/bundle #instead '--no-deployment --without development test --path vendor/bundle' put your specific options
 ```
 
 Perform the migrations
@@ -64,7 +64,7 @@ rm -rf redmine_books
 
 Remove all plugin gems from Gemfile.lock
 ```console
-bundle install --no-deployment --without development test #instead '--no-deployment --without development test' put your specific options
+bundle install --no-deployment --without development test --path vendor/bundle #instead '--no-deployment --without development test --path vendor/bundle' put your specific options
 ```
 
 Restart server.
