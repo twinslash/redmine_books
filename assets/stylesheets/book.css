@@ -1,7 +1,3 @@
-/*
-*= require select2
-*/
-
 .book-form-photo-group {
   margin-left: 180px;
 }
@@ -126,10 +122,6 @@
 #users_books_permissions_form fieldset div {
   max-height: 400px;
   overflow: auto;
-}
-
-select #tags {
-  width: 60px;
 }
 
 a.icon-take { background-image: url(../images/take_book_icon.png); }
