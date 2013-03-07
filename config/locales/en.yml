@@ -9,6 +9,10 @@ en:
   label_book_edit: Edit book
   label_group_search: "Search for group:"
   label_principal: Principal
+  label_all_selected_tags: All selected tags
+  label_search_by_tags: Search by tags
+
+  hint_tags_to_search: Select tags to search
 
   link_show_history: Show book history
 
@@ -43,6 +47,7 @@ en:
         status: Status
         title: Title
         files: Files
+        tag_names: Tags
   book:
     new: Add new book
     current_user: current user

@@ -5,7 +5,11 @@ class BooksController < ApplicationController
   before_filter :delete_empty_book_files, only: [:create, :update]
 
   def index
-    scope = Book.scoped
+    @tags = Book.tag_counts
+    @selected_tags = params[:tags]
+    @match_all = params[:match_all].present? ? true : false
+    tagged_options = @match_all ? { } : { any: true }
+    scope = params[:tags].blank? ? Book.scoped : Book.tagged_with(@selected_tags, tagged_options)
     @books_count = scope.count
     @limit = per_page_option
     @books_pages = Paginator.new(self, @books_count, @limit, params[:page])

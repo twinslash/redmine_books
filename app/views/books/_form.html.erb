@@ -32,6 +32,10 @@
         <%= wikitoolbar_for 'book_description' %>
       </p>
       <p>
+        <%= f.label :tag_names %>
+        <%= f.text_field :tag_names %>
+      </p>
+      <p>
         <%= f.label :book_files %>
         <%= f.fields_for :book_files  do |book_file_form| %>
           <%= book_file_form.file_field :file %>

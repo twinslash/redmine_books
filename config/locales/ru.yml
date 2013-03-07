@@ -9,6 +9,10 @@ ru:
   label_book_edit: Правка книги
   label_group_search: "Найти группу:"
   label_principal: Принципал
+  label_all_selected_tags: Все выбранные теги
+  label_search_by_tags: Поиск по тегам
+
+  hint_tags_to_search: Выберите теги для поиска
 
   link_show_history:  Показать историю книги
 
@@ -43,6 +47,7 @@ ru:
         status: Статус
         title: Заголовок
         files: Файлы
+        tag_names: Теги
   book:
     new: Добавить новую книгу
     current_user: текущий пользователь

@@ -38,4 +38,11 @@ module BooksHelper
     end
     links.html_safe
   end
+
+  def localise_select2_javascript_for(locale)
+    if locale.in? [:de, :es, :fr, :hu, :it, :pt, :ru, :zh]
+      javascript_include_tag "/select2/select2_locale_#{locale}.js", plugin: 'redmine_books'
+    end
+  end
+
 end
