@@ -44,7 +44,7 @@ $(document).ready( function () {
 
         function deletePhoto() {
             $.ajax( {
-                url: '/books//delete_photo?photo_name=' + photoName,
+                url: '/books/delete_photo?photo_name=' + photoName,
                 type: 'DELETE'
             });
             window.onbeforeunload = onbeforeunload;

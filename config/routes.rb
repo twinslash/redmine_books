@@ -6,9 +6,9 @@ resources :books do
     get 'load_history'
   end
   collection do
-    post '/upload_photo'
-    put '/upload_photo'
-    delete '/delete_photo'
+    post 'upload_photo'
+    put 'upload_photo'
+    delete 'delete_photo'
   end
 end
 
