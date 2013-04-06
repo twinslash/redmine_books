@@ -1,3 +1,4 @@
 $(function () {
   $("#tags").select2();
 })
+

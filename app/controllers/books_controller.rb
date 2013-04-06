@@ -19,6 +19,10 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @user = User.current
+    @rate = @book.rate_by User.current
+    @rate ||= Rate.new
+    @rates = @book.rates_without_dimension
   end
 
   def new
@@ -107,6 +111,17 @@ class BooksController < ApplicationController
     @book_records = @book.book_records
     respond_to do |format|
       format.js
+    end
+  end
+
+  def estimate
+    @book = Book.find(params[:id])
+    @book.rate(params[:stars].to_i, User.current)
+    @rate = @book.rate_by(User.current)
+    @rate.update_attributes params[:rate]
+
+    respond_to do |format|
+      format.js { render 'rates/update_rates' }
     end
   end
 

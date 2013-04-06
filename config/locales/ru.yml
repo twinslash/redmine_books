@@ -12,6 +12,9 @@ ru:
   label_all_selected_tags: Все выбранные теги
   label_search_by_tags: Поиск по тегам
 
+  field_comment: Комментарий
+  field_estimate: Оценка
+
   hint_tags_to_search: Выберите теги для поиска
 
   link_show_history:  Показать историю книги
@@ -22,6 +25,7 @@ ru:
   principal_books_action_take: Взять книгу
   principal_books_action_give: Вернуть книгу
   principal_books_action_give_instead_user: Вернуть книгу вместо пользоветеля
+  principal_books_action_estimate: Оценить
 
   notice_book_deleted: "Книга '%{title}' удалена"
   notice_book_saved: Книга успешно сохранена
@@ -86,3 +90,9 @@ ru:
           attributes:
             status:
               must_be_busy_because_current_user_present: "должен быть 'Занята' потому что указан текущий пользователь"
+
+  ajaxful_rating:
+    helper:
+      global_average: "Общий рейтинг: %{value} из %{max}"
+      user_rating: "Ваш рейтинг: %{value} из %{max}"
+      hover: "Рейтинг %{value} из %{max}"

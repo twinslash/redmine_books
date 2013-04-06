@@ -1,9 +1,12 @@
 <%= content_for :header_tags do %>
-  <%= stylesheet_link_tag 'book', plugin: 'redmine_books'%>
+  <%= stylesheet_link_tag 'book', :plugin => 'redmine_books'%>
+  <%= javascript_include_tag 'rate', :plugin => 'redmine_books' %>
+  <%= ajaxful_rating_script :plugin => 'redmine_books' %>
 <% end %>
 
 <div class="contextual">
   <%= link_to l(:button_back), books_path, class: "icon icon-cancel" %>
+  <%= link_to_action "estimate", @book, :onclick => "showFormForRate(#{ @rate.id });return false;" %>
   <% ["take", "give", "give_instead_user", "edit", "delete"].each do |action| %>
     <%= link_to_action action, @book %>
   <% end %>
@@ -30,5 +33,16 @@
       <% end %>
     <% end %>
   </div>
+
+  <div id="rates">
+    <%= render :template => 'rates/new' %>
+    <!-- Remove javascript from form to prevent execution after submit -->
+    <script text="javascript">
+      $('#new_rate script').detach();
+    </script>
+    <%= render :partial => 'rates/rate', :collection => @rates %>
+    <%= ajaxful_rating_style :plugin => 'redmine_books' %>
+  </div>
+
   <%= link_to l(:link_show_history), load_history_book_path(@book), id: 'book_history', remote: true if @book.paper? %>
 </div>

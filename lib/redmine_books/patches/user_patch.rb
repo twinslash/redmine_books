@@ -16,6 +16,9 @@ module RedmineBooks
           has_many :current_book_records, class_name: :BookRecord, conditions: ["#{BookRecord.table_name}.returned_at IS :null AND #{BookRecord.table_name}.returned_by_id IS :null", { null: nil }]
           has_many :books, through: :current_book_records
 
+          # make User model able to rate objects
+          ajaxful_rater
+
           before_destroy :does_not_have_books?
 
           private
@@ -52,6 +55,8 @@ module RedmineBooks
             when "delete", "destroy"
               action = "delete"
               admin? || @user_books_permission.allows?(action)
+            when "estimate"
+              true
             else
               false
             end

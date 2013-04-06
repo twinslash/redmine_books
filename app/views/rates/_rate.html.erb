@@ -1,0 +1,11 @@
+<div id="rate_<%= rate.id %>" style="border-top: 1px solid #ccc;clear:both">
+  <div>
+    <%= ratings_for @book, rate.rater, :show_user_rating => true, :size => 'medium', :remote_options => { :url => "#" } %>
+  </div>
+  <div class="<%= cycle 'even', 'odd'%>">
+    <%= rate.comment %>
+  </div>
+  <div style="float:right">
+    <%= link_to_user rate.rater %>
+  </div>
+</div>

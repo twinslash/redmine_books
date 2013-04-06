@@ -3,8 +3,8 @@ class AddTagNamesToBooks < ActiveRecord::Migration
     add_column :books, :tag_names, :string, default: ""
     # update old records
     execute <<-SQL
-      UPDATE `books`
-      SET books.`tag_names` = ""
+      UPDATE books
+      SET books.tag_names = ""
     SQL
   end
 

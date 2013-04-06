@@ -4,6 +4,8 @@ resources :books do
     get 'give'
     get 'give_instead_user'
     get 'load_history'
+    post 'estimate'
+    put 'estimate'
   end
   collection do
     post 'upload_photo'
@@ -12,8 +14,7 @@ resources :books do
   end
 end
 
-
-resources :books_settings, only: [:create, :destroy, :index] do
+resources :books_settings, :only => [:create, :destroy, :index] do
   collection do
     get :autocomplete_for_users
   end

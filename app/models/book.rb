@@ -12,9 +12,13 @@ class Book < ActiveRecord::Base
   has_one :current_book_record, class_name: :BookRecord, conditions: ["#{BookRecord.table_name}.returned_at IS :null AND #{BookRecord.table_name}.returned_by_id IS :null", { null: nil }], include: [:user]
   validates :title, :author, presence: true, length: { in: 2..100 }
   validate :book_with_current_book_record_must_be_busy
+
   # allows book to be taggable on :tags
   acts_as_taggable
   before_save :attach_tags
+
+  # let a book to be rateable
+  ajaxful_rateable :stars => 6, :cache_column => :rating_average, :allow_update => true
 
   def paper?
     free? || busy?

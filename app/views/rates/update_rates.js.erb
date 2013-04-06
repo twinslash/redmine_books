@@ -1,0 +1,4 @@
+$('#new_rate').after("<%= escape_javascript(render 'rates/rate', :rate => @rate) %>");
+$('.icon.icon-estimate').attr('onclick', "showFormForRate(<%= @rate.id %>);return false;");
+$('#submit_rate').attr('onclick', "beforeSubmitRate(<%= @rate.id %>);");
+$('#cancel_rate').attr('onclick', "cancelRate(<%= @rate.id %>);return false;");

@@ -12,6 +12,9 @@ en:
   label_all_selected_tags: All selected tags
   label_search_by_tags: Search by tags
 
+  field_comment: Comment
+  field_estimate: Estimate
+
   hint_tags_to_search: Select tags to search
 
   link_show_history: Show book history
@@ -22,6 +25,7 @@ en:
   principal_books_action_take: Take book
   principal_books_action_give: Return book
   principal_books_action_give_instead_user: Return book instead user
+  principal_books_action_estimate: Estimate
 
   notice_book_deleted: "Book '%{title}' deleted"
   notice_book_saved: Book successfully saved
@@ -86,3 +90,9 @@ en:
           attributes:
             status:
               must_be_busy_because_current_user_present: "must be 'Busy' because current user present"
+
+  ajaxful_rating:
+    helper:
+      global_average: "Global rating average: %{value} out of %{max}"
+      user_rating: "Your rating: %{value} out of %{max}"
+      hover: "Rate %{value} out of %{max}"

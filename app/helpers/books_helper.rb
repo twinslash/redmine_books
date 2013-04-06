@@ -24,9 +24,9 @@ module BooksHelper
     if User.current.allowed_books_to? action, book
       case action
       when "delete"
-        link_to l("principal_books_action_#{action}"), book_path(book), { method: :delete, data: { confirm: l(:text_are_you_sure) }, class: 'icon icon-del' }.merge(options)
+        link_to options[:title] || l("principal_books_action_#{action}"), book_path(book), { method: :delete, data: { confirm: l(:text_are_you_sure) }, class: 'icon icon-del' }.merge(options)
       else
-        link_to l("principal_books_action_#{action}"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
+        link_to options[:title] || l("principal_books_action_#{action}"), send("#{action}_book_path", book), { class: "icon icon-#{action}" }.merge(options)
       end
     end
   end
@@ -44,5 +44,4 @@ module BooksHelper
       javascript_include_tag "/select2/select2_locale_#{locale}.js", plugin: 'redmine_books'
     end
   end
-
 end

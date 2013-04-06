@@ -8,7 +8,7 @@ end
 
 module RedmineBooks
   def self.available_principal_books_actions
-    [:edit, :add, :delete, :take, :give_instead_user]
+    [:edit, :add, :delete, :take, :give_instead_user, :estimate]
   end
 
   def self.include_action?(action)
