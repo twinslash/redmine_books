@@ -7,10 +7,11 @@ $('div.book-header span').html("<%= escape_javascript(ratings_for @book, :static
 
 // clear error messages on form
 $('#new_rate #errorExplanation').remove();
+// hide form
+$('#new_rate').hide();
 
 // update form links
-$('#submit_rate').attr('onclick', "beforeSubmitRate(<%= @rate.id %>);");
-$('#cancel_rate').attr('onclick', "cancelRate(<%= @rate.id %>);return false;")
+$('#cancel_rate').attr('onclick', "cancelRate(<%= @rate.id %>);return false;");
 
 // update estimate link
-$('a.icon-estimate').attr('onclick', "showFormForRate(<%= @rate.id %>);return false;")
+$('a.icon.icon-estimate').attr('onclick', "showFormForRate(<%= @rate.id %>);return false;")

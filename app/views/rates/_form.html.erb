@@ -11,7 +11,7 @@
       <%= ratings_for @book, @user, :current_user => @user, :show_user_rating => true, :wrap => true, :update_form => true %>
     </div>
 
-    <%= f.submit :submit, :onclick => "beforeSubmitRate(#{ @rate.id });", :id => 'submit_rate' %>
+    <%= f.submit :submit %>
     <%= link_to t('button_cancel'), "#", :onclick => "cancelRate(#{ @rate.id });return false;", :id => 'cancel_rate' %>
   </div>
 <% end %>
