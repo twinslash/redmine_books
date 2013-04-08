@@ -8,12 +8,6 @@
   overflow: hidden;
 }
 
-.book-header {
-  height: 26px;
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .book-header h2 {
   margin-top: -26px;
   margin-left: 150px;
@@ -59,10 +53,17 @@
 
 .books-book {
   float: left;
+<<<<<<< HEAD
   width: 48%;
   padding: 3px;
   border: solid 1px #D5D5D5;
   margin: 0 0 1px 1%;
+=======
+  width: 45%;
+  padding: 3px;
+  border: solid 1px #D5D5D5;
+  margin: 0 0 1px 3%;
+>>>>>>> 9d124836b88dd7b53ef1adb63339a3b6b871de72
   height: 134px;
   overflow: hidden;
 }

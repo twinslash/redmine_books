@@ -9,8 +9,8 @@ $('div.book-header span').html("<%= escape_javascript(ratings_for @book, :static
 $('#new_rate #errorExplanation').remove();
 
 // update form links
-$('#new_rate form input:submit').attr('onclick', "beforeSubmitRate(<%= @rate.id %>);");
-$('#new_rate form #cancel_rate').attr('onclick', "cancelRate(<%= @rate.id %>);return false;")
+$('#submit_rate').attr('onclick', "beforeSubmitRate(<%= @rate.id %>);");
+$('#cancel_rate').attr('onclick', "cancelRate(<%= @rate.id %>);return false;")
 
 // update estimate link
 $('a.icon-estimate').attr('onclick', "showFormForRate(<%= @rate.id %>);return false;")

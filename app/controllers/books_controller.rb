@@ -115,6 +115,7 @@ class BooksController < ApplicationController
   end
 
   def estimate
+<<<<<<< HEAD
     @user = User.current
     @book = Book.find(params[:id])
     @rate = @book.rate(params[:stars].to_i, @user, nil, params[:rate])
@@ -125,6 +126,15 @@ class BooksController < ApplicationController
       else
         format.js { render 'rates/update_form' }
       end
+=======
+    @book = Book.find(params[:id])
+    @book.rate(params[:stars].to_i, User.current)
+    @rate = @book.rate_by(User.current)
+    @rate.update_attributes params[:rate]
+
+    respond_to do |format|
+      format.js { render 'rates/update_rates' }
+>>>>>>> 9d124836b88dd7b53ef1adb63339a3b6b871de72
     end
   end
 
