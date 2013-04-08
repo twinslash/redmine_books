@@ -1,0 +1,55 @@
+<%= content_for :header_tags do %>
+  <%= stylesheet_link_tag 'book', :plugin => 'redmine_books' %>
+  <%= stylesheet_link_tag 'rate.css', :plugin => 'redmine_books' %>
+  <%= javascript_include_tag 'rate', :plugin => 'redmine_books' %>
+  <%= ajaxful_rating_script :plugin => 'redmine_books' %>
+<% end %>
+
+<div class="contextual">
+  <%= link_to l(:button_back), books_path, class: "icon icon-cancel" %>
+  <%= link_to_action "estimate", @book, :onclick => "showFormForRate(#{ @rate.id });return false;" %>
+  <% ["take", "give", "give_instead_user", "edit", "delete"].each do |action| %>
+    <%= link_to_action action, @book %>
+  <% end %>
+</div>
+
+<div class="book-header">
+  <span>
+    <%= ratings_for @book, :static, :remote_options => {:url => "#"} %>
+  </span>
+  <h2><%= @book.title %></h2>
+</div>
+
+<div class="book">
+  <div class="book-photo">
+      <%= photo_for @book, :original, width: "450px;" %>
+  </div>
+  <div class="book-info">
+    <b class="book-attribute"><%= l("book.author") %>:</b>
+    <%= @book.author %></br>
+    <b class="book-attribute"><%= l("book.status") %>:</b>
+    <%= render 'book_status', book: @book %></br>
+    <% unless @book.description.blank? %>
+      <b class="book-attribute"><%= l("book.description") %>:</b>
+      <p class="book-description"><%= textilizable(@book.description) %></p>
+    <% end %>
+    <% unless @book.book_files.blank? %>
+      <b class="book-attribute"><%= l("book.files") %>:</b></br>
+      <% @book.book_files.each do |book_file| %>
+        <%= link_to book_file.file_url.split('/').last, book_file.file_url if book_file.file_url %></br>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div id="rates">
+    <%= render :template => 'rates/new' %>
+    <!-- Remove javascript from form to prevent execution after submit -->
+    <script text="javascript">
+      $('#new_rate script').detach();
+    </script>
+    <%= render :partial => 'rates/rate', :collection => @rates %>
+    <%= ajaxful_rating_style :plugin => 'redmine_books' %>
+  </div>
+
+  <%= link_to l(:link_show_history), load_history_book_path(@book), id: 'book_history', remote: true if @book.paper? %>
+</div>

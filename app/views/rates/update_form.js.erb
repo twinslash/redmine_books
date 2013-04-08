@@ -1,0 +1,6 @@
+// clear error messages on form
+$('#new_rate #errorExplanation').remove();
+
+// update form with error messages
+$('#new_rate').prepend("<%= escape_javascript(error_messages_for(@rate)) %>");
+$('#new_rate').show();

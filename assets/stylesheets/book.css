@@ -1,0 +1,151 @@
+.book-form-photo-group {
+  margin-left: 180px;
+}
+
+.book {
+  border: 1px solid #AAA;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.book-header {
+  height: 26px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.book-header h2 {
+  margin-top: -26px;
+  margin-left: 150px;
+  padding: 2px 6px;
+}
+
+.book-photo {
+  float: right;
+  padding: 6px 10px;
+}
+
+.book-info {
+  padding: 2%;
+}
+
+.book-attribute {
+  font-size: 1.2em;
+  line-height: 150%;
+}
+
+.book-description {
+  margin: 0;
+  padding: 0;
+  text-indent: 5%;
+}
+
+#book_history {
+  clear: both;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: Verdana, Geneva, Arial, Helvetica;
+  border-radius: 3px;
+  color: gray;
+  background: #EEE;
+  padding: 6px 0;
+}
+
+.books {
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.books-book {
+  float: left;
+  width: 48%;
+  padding: 3px;
+  border: solid 1px #D5D5D5;
+  margin: 0 0 1px 1%;
+  height: 134px;
+  overflow: hidden;
+}
+
+.books-book-status {
+  border-radius: 5px;
+  padding: 1px 3px;
+  margin: 1px;
+}
+
+.books-book-status-ebook {
+  background: #c8c8ff;
+}
+
+.books-book-status-will_be_purchased {
+  background: #ffffc8;
+}
+
+.books-book-status-free {
+  background: #c8ffc8;
+}
+
+.books-book-status-busy {
+  background: #ffc8c8;
+}
+
+.books-book-actions-take {
+  margin-right: 1%;
+}
+
+.books-book-photo {
+  float: left;
+  margin: 3px 0;
+  max-width: 24%;
+  overflow: hidden;
+}
+
+.books-book-info {
+  width: 73%;
+  float: left;
+  margin-left: 10px;
+}
+
+.books-book-info-cell {
+  display: table-cell;
+  vertical-align: middle;
+  height: 116px;
+  overflow: hidden;
+}
+
+.books-book-title {
+  font-size: 12px;
+}
+
+.books-book-author {
+  font-size: 10px;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.books-book-actions-edit {
+  margin-top: 6px;
+}
+
+#users_books_permissions_form fieldset label {
+  display: block;
+}
+
+#users_books_permissions_form fieldset div {
+  max-height: 400px;
+  overflow: auto;
+}
+
+/* used instead p to display list of stars */
+.tabular div.rating {
+  margin: 0;
+  padding: 3px 0 3px 0;
+  padding-left: 180px; /* width of left column containing the label elements */
+  min-height: 1.8em;
+  clear:left;
+}
+
+a.icon-take { background-image: url(../images/take_book_icon.png); }
+a.icon-give { background-image: url(../images/give_book_icon.png); }
+a.icon-give_instead_user { background-image: url(../images/give_book_instead_user_icon.png); }
+a.icon-estimate { background-image: url(../images/estimate_book_icon.png); }

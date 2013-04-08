@@ -1,0 +1,14 @@
+<div id="rate_<%= rate.id %>" class="rate <%= cycle 'even', 'odd'%>">
+  <div class="rating">
+    <%= ratings_for @book, rate.rater, :show_user_rating => true, :size => 'medium' %>
+  </div>
+  <div class="comment">
+    <%= rate.comment %>
+  </div>
+  <div class="info">
+    <%= t('commented_by') %> <%= link_to_user rate.rater %> <%= ::I18n.l(rate.created_at, :format => :short) %>.
+    <% unless rate.created_at.eql? rate.updated_at %>
+      <%= t('last_updated_at')%> <%= ::I18n.l(rate.updated_at, :format => :short)  %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to_user book_record.user %></td>
+  <td><%= book_record.taken_at %></td>
+  <td><%= book_record.returned_at || '-' %></td>
+  <td><%= book_record.returned_by ? link_to_user(book_record.returned_by) : '-' %></td>
+</tr>

@@ -1,0 +1,17 @@
+<%= labelled_form_for @rate, :url => estimate_book_path(@book), :remote => true do |f| %>
+  <%= error_messages_for @rate %>
+  <div class="box tabular">
+    <p>
+      <%= f.text_area :comment, :required => true, :class => 'wiki-edit', :rows => 5 %>
+      <%= wikitoolbar_for 'rate_comment' %>
+    </p>
+
+    <div class="rating">
+      <%= label_tag t('field_estimate') %>
+      <%= ratings_for @book, @user, :current_user => @user, :show_user_rating => true, :wrap => true, :update_form => true %>
+    </div>
+
+    <%= f.submit :submit, :onclick => "beforeSubmitRate(#{ @rate.id });", :id => 'submit_rate' %>
+    <%= link_to t('button_cancel'), "#", :onclick => "cancelRate(#{ @rate.id });return false;", :id => 'cancel_rate' %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<h3><%= t('label_search_by_tags') %></h3>
+<%= form_tag({}, method: :get) do %>
+  <p>
+    <%= select_tag "tags",
+                   options_from_collection_for_select(@tags, :name, :name, @selected_tags),
+                   multiple: true,
+                   placeholder: t('hint_tags_to_search'),
+                   style: "min-width:260px",
+                   class: "populate select2-offscreen",
+                   tabindex: "-1" %>
+  </p>
+  <p>
+    <%= hidden_field_tag "match_all" %>
+    <label><%= check_box_tag "match_all", 1, @match_all %><%= t('label_all_selected_tags') %></label>
+  </p>
+  <p><%= submit_tag l(:button_submit), :name => 'submit' %></p>
+<% end %>

@@ -1,0 +1,6 @@
+<% if @users_permissions.any? || @groups_permissions.any? %>
+  <%= render 'principals_books_permissions', principals_books_permissions: @users_permissions, principal: :user %>
+  <%= render 'principals_books_permissions', principals_books_permissions: @groups_permissions, principal: :group %>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %> </p>
+<% end %>

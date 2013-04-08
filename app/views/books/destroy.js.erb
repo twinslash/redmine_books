@@ -1,0 +1,3 @@
+var removedBook = $('<%= "#book_#{ @book.id }" %>');
+removedBook.parentNode.removeChild(removedBook);
+<%= render 'remote_flash' %>

@@ -1,0 +1,4 @@
+$('#principals_books_permissions').html('<%= escape_javascript render('books_permissions') %>');
+<% @principals_ids.each do |principal_id| %>
+  $('#principal-<%= principal_id %>').effect("highlight");
+<% end %>

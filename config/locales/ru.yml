@@ -1,0 +1,101 @@
+ru:
+  label_books: Книги
+  label_books_settings: Настройки книг
+  label_permissions_new: Новые разрешения
+  back: Нвзад
+  label_action: Действие
+  label_action_plural: Действия
+  label_book_new: Новая книга
+  label_book_edit: Правка книги
+  label_group_search: "Найти группу:"
+  label_principal: Принципал
+  label_all_selected_tags: Все выбранные теги
+  label_search_by_tags: Поиск по тегам
+
+  field_comment: Комментарий
+  field_estimate: Оценка
+
+  hint_tags_to_search: Выберите теги для поиска
+
+  link_show_history:  Показать историю книги
+
+  principal_books_action_edit: Редактировать книгу
+  principal_books_action_add: Создать книгу
+  principal_books_action_delete: Удалить книгу
+  principal_books_action_take: Взять книгу
+  principal_books_action_give: Вернуть книгу
+  principal_books_action_give_instead_user: Вернуть книгу вместо пользоветеля
+  principal_books_action_estimate: Оценить
+
+  notice_book_deleted: "Книга '%{title}' удалена"
+  notice_book_saved: Книга успешно сохранена
+  notice_book_updated: Книга успешно обновлена
+  notice_book_taken: "Вы успешно взяли книгу '%{title}'"
+  notice_book_returned: "Вы успешно вернули книгу '%{title}'"
+
+  error_book_deleting: "Произошла ошбка при удалении книги '%{title}'"
+  error_book_taking: "Произошла ошибка. Вы не взяли книгу '%{title}'"
+  error_book_returning: "Произошла ошибка. Вы не вернули книгу '%{title}'"
+
+  helpers:
+    submit:
+      book:
+        create: Добавить книгу
+        update: Сохранить изменения
+    label:
+      book: &book_labels
+        author: Автор
+        book_files: Файлы книги
+        description: Описание
+        photo: Фото
+        status: Статус
+        title: Заголовок
+        files: Файлы
+        tag_names: Теги
+  book:
+    new: Добавить новую книгу
+    current_user: текущий пользователь
+    empty_history: История пуста
+    <<: *book_labels
+
+  book_record:
+    taken_by: Кто брал
+    taken_at: Когда взял
+    returned_at: Когда вернул
+    returned_by: Кто вернул
+
+  enumerize:
+    status:
+      ebook:  Электронная книга
+      will_be_purchased: Планируется приобрести
+      busy: Занята
+      free: Свободна
+  nested_form:
+    links:
+      book:
+        book_file:
+          link_to_add: Добавить файл книги
+          link_to_remove: Удалить файл книги
+
+  errors:
+    messages:
+      wrong_size: "недопустимый размер (должен быть %{file_size})"
+      size_too_small: "слишком мал (должен быть не менее %{file_size})"
+      size_too_big: "слишком большой (должен быть не более %{file_size})"
+
+  activerecord:
+    errors:
+      models:
+        book:
+          attributes:
+            status:
+              must_be_busy_because_current_user_present: "должен быть 'Занята' потому что указан текущий пользователь"
+
+  ajaxful_rating:
+    helper:
+      global_average: "Общий рейтинг: %{value} из %{max}"
+      user_rating: "Ваш рейтинг: %{value} из %{max}"
+      hover: "Рейтинг %{value} из %{max}"
+
+  commented_by: Прокомментировал
+  last_updated_at: Последний раз редактировалось

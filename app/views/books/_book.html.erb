@@ -1,0 +1,20 @@
+<div id=<%= "book_#{ book.id }" %> class="books-book">
+  <div <%= "class='books-book-status books-book-status-#{book.status}'".html_safe %>> <%= render "book_status", book: book %>
+    <div style="float: right;" class="books-book-actions-take">
+      <%= link_to_actions ["take", "give", "give_instead_user"], book, remote: true %>
+    </div>
+  </div>
+  <div class="books-book-photo">
+    <%= link_to photo_for(book, nil, height: "110px"), book_path(book) %>
+  </div>
+  <div class="books-book-info">
+    <div class="books-book-info-cell">
+      <div class="books-book-title"><%= link_to book.title, book_path(book) %></div>
+      <div class="books-book-author"><%= book.author %></div>
+      <%= ratings_for book, :static, :size => 'small' %>
+      <div class="books-book-actions-edit">
+       <%= link_to_actions ["edit", "delete"], book %>
+      </div>
+    </div>
+  </div>
+</div>

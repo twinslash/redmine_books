@@ -1,0 +1,101 @@
+en:
+  label_books: Books
+  label_books_settings: Books settings
+  label_permissions_new: New permissions
+  back: Back
+  label_action: Action
+  label_action_plural: Actions
+  label_book_new: New book
+  label_book_edit: Edit book
+  label_group_search: "Search for group:"
+  label_principal: Principal
+  label_all_selected_tags: All selected tags
+  label_search_by_tags: Search by tags
+
+  field_comment: Comment
+  field_estimate: Estimate
+
+  hint_tags_to_search: Select tags to search
+
+  link_show_history: Show book history
+
+  principal_books_action_edit: Edit book
+  principal_books_action_add: Add book
+  principal_books_action_delete: Delete book
+  principal_books_action_take: Take book
+  principal_books_action_give: Return book
+  principal_books_action_give_instead_user: Return book instead user
+  principal_books_action_estimate: Estimate
+
+  notice_book_deleted: "Book '%{title}' deleted"
+  notice_book_saved: Book successfully saved
+  notice_book_updated: Book successfully updated
+  notice_book_taken: "You have successfully taken the book '%{title}'"
+  notice_book_returned: "You have successfully returned the book '%{title}'"
+
+  error_book_deleting: "An error occurred when removing the book '%{title}'"
+  error_book_taking: "An error occurred when taking the book '%{title}'"
+  error_book_returning: "An error occurred when returning the book '%{title}'"
+
+  helpers:
+    submit:
+      book:
+        create: Add book
+        update: Save changes
+    label:
+      book: &book_labels
+        author: Author
+        book_files: Book files
+        description: Description
+        photo: Photo
+        status: Status
+        title: Title
+        files: Files
+        tag_names: Tags
+  book:
+    new: Add new book
+    current_user: current user
+    empty_history: History is empty
+    <<: *book_labels
+
+  book_record:
+    taken_by: Who took
+    taken_at: When took
+    returned_at: When returned
+    returned_by: Who returned
+
+  enumerize:
+    status:
+      ebook: E-book
+      will_be_purchased: Will be purchased
+      busy: Busy
+      free: Free
+  nested_form:
+    links:
+      book:
+        book_file:
+          link_to_add: Add a book file
+          link_to_remove: Remove this book file
+
+  errors:
+    messages:
+      wrong_size: "is the wrong size (should be %{file_size})"
+      size_too_small: "is too small (should be at least %{file_size})"
+      size_too_big: "is too big (should be at most %{file_size})"
+
+  activerecord:
+    errors:
+      models:
+        book:
+          attributes:
+            status:
+              must_be_busy_because_current_user_present: "must be 'Busy' because current user present"
+
+  ajaxful_rating:
+    helper:
+      global_average: "Global rating average: %{value} out of %{max}"
+      user_rating: "Your rating: %{value} out of %{max}"
+      hover: "Rate %{value} out of %{max}"
+
+  commented_by: Commented by
+  last_updated_at: Last updated at

@@ -1,0 +1,16 @@
+// update rate on form
+$('#rate_<%= @rate.id %>').remove();
+$('#new_rate').after("<%= escape_javascript(render 'rates/rate', :rate => @rate) %>");
+
+// update average rating
+$('div.book-header span').html("<%= escape_javascript(ratings_for @book, :static) %>");
+
+// clear error messages on form
+$('#new_rate #errorExplanation').remove();
+
+// update form links
+$('#new_rate form input:submit').attr('onclick', "beforeSubmitRate(<%= @rate.id %>);");
+$('#new_rate form #cancel_rate').attr('onclick', "cancelRate(<%= @rate.id %>);return false;")
+
+// update estimate link
+$('a.icon-estimate').attr('onclick', "showFormForRate(<%= @rate.id %>);return false;")
