@@ -9,3 +9,10 @@ gem 'ajaxful_rating_jquery', :git => 'https://github.com/Hirurg103/ajaxful_ratin
 group :development do
   gem 'pry'
 end
+
+group :test do
+  gem 'rspec'
+  gem 'cucumber'
+  gem 'factory_girl'
+  gem 'faker'
+end

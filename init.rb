@@ -4,7 +4,7 @@ Redmine::Plugin.register :redmine_books do
   name 'Redmine Books plugin'
   author 'Author name'
   description 'This is a plugin for Redmine'
-  version '0.0.1'
+  version '0.0.3'
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
 

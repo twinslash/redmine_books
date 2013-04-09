@@ -50,6 +50,9 @@ User has permissions of groups to which he belongs.
 
 ![](http://farm9.staticflickr.com/8352/8414138965_db111ed633_c.jpg)
 
+* Search by tags
+* Apportunity to vote and comment
+
 ## Uninstall
 
 Roll back all plugins migrations
@@ -68,3 +71,10 @@ bundle install --no-deployment --without development test --path vendor/bundle #
 ```
 
 Restart server.
+
+## Changelog
+
+* 0.0.3 - Added ability to vote and comment(08.04.2013)
+* 0.0.2 - Search by tags(07.03.2013)
+* 0.0.1 - Base functionality
+
