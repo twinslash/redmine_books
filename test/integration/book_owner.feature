@@ -1,3 +1,5 @@
+@leave_the_window_open
+@javascript
 Feature: To take book back to home
   I should to be able make book invisible
 

@@ -5,7 +5,11 @@ Given /^I am in the system$/ do
 end
 
 Given /^I logged in$/ do
-  pending
+  visit signin_path
+  fill_in 'username', :with => @me.login
+  fill_in 'password', :with => @me.password
+  click_link 'login'
+  page.should have_content 'My page'
 end
 
 Given /^I have one own book$/ do
