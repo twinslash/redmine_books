@@ -11,9 +11,11 @@ ru:
   label_principal: Принципал
   label_all_selected_tags: Все выбранные теги
   label_search_by_tags: Поиск по тегам
+  label_my_books: Мои книги
 
   field_comment: Комментарий
   field_estimate: Оценка
+  field_own_book: Я хозяин
 
   hint_tags_to_search: Выберите теги для поиска
 
@@ -36,6 +38,7 @@ ru:
   error_book_deleting: "Произошла ошбка при удалении книги '%{title}'"
   error_book_taking: "Произошла ошибка. Вы не взяли книгу '%{title}'"
   error_book_returning: "Произошла ошибка. Вы не вернули книгу '%{title}'"
+  error_can_not_change_visibility: Вы не можете изменить видимость книги
 
   helpers:
     submit:
@@ -52,6 +55,7 @@ ru:
         title: Заголовок
         files: Файлы
         tag_names: Теги
+        owner: Owner
   book:
     new: Добавить новую книгу
     current_user: текущий пользователь
@@ -88,6 +92,8 @@ ru:
       models:
         book:
           attributes:
+            base:
+              only_paper_book_can_have_owner: Только бумажная книга может иметь влажельца
             status:
               must_be_busy_because_current_user_present: "должен быть 'Занята' потому что указан текущий пользователь"
 

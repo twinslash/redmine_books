@@ -19,6 +19,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    @is_visible = @book.visible?
     @user = User.current
     @rate = @book.rate_by User.current
     @rate ||= Rate.new
@@ -33,6 +34,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(params[:book])
+    @book.owner = params[:own_book] ? @user : nil
     if @book.save
       flash[:notice] = l(:notice_book_saved)
       redirect_to book_path @book
@@ -42,6 +44,7 @@ class BooksController < ApplicationController
   end
 
   def update
+    @book.owner = params[:own_book] ? @user : nil
     if @book.update_attributes(params[:book])
       flash[:notice] = l(:notice_book_updated)
       redirect_to book_path @book
@@ -116,7 +119,6 @@ class BooksController < ApplicationController
 
   def estimate
     @user = User.current
-    @book = Book.find(params[:id])
     @rate = @book.rate(params[:stars].to_i, @user, nil, params[:rate])
 
     respond_to do |format|
@@ -128,26 +130,31 @@ class BooksController < ApplicationController
     end
   end
 
+  def change_visibility
+    @book = Book.find(params[:id])
+  end
+
+
   private
 
-  def check_permission
-    action = params[:action]
-    @book = Book.find(params[:id]) if params[:id]
-    @book ||= Book.new
-    if User.current.allowed_books_to? action, @book
-      true
-    else
-      deny_access
+    def check_permission
+      action = params[:action]
+      @book = Book.find(params[:id]) if params[:id]
+      @book ||= Book.new
+      if User.current.allowed_books_to? action, @book
+        true
+      else
+        deny_access
+      end
     end
-  end
 
-  def assembly_photo_path
-    @photo_path = Rails.root.to_path + "/public/tmp/" + params[:photo_name].to_s.split('/').join('_')
-  end
-
-  def delete_empty_book_files
-    params[:book][:book_files_attributes] && params[:book][:book_files_attributes].select! do |_, v|
-      v.is_a?(Hash) && v[:file].present?
+    def assembly_photo_path
+      @photo_path = Rails.root.to_path + "/public/tmp/" + params[:photo_name].to_s.split('/').join('_')
     end
-  end
+
+    def delete_empty_book_files
+      params[:book][:book_files_attributes] && params[:book][:book_files_attributes].select! do |_, v|
+        v.is_a?(Hash) && v[:file].present?
+      end
+    end
 end

@@ -8,6 +8,10 @@
   overflow: hidden;
 }
 
+.invisible {
+  opacity: 0.5;
+}
+
 .book-header h2 {
   margin-top: -26px;
   margin-left: 150px;

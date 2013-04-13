@@ -1,15 +1,13 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../test_helper')
-
 Given /^I am in the system$/ do
-  @me = FactoryGirl.create(:active_user)
+  @me = User.first
 end
 
 Given /^I logged in$/ do
-  visit signin_path
-  fill_in 'username', :with => @me.login
-  fill_in 'password', :with => @me.password
-  click_link 'login'
-  page.should have_content 'My page'
+  visit '/'
+  # fill_in 'username', :with => @me.login
+  # fill_in 'password', :with => @me.password
+  # click_link 'login'
+  # page.should have_content 'My page'
 end
 
 Given /^I have one own book$/ do

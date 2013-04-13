@@ -36,6 +36,10 @@
         <%= f.text_field :tag_names %>
       </p>
       <p>
+        <%= f.label l('field_own_book') %>
+        <%= check_box_tag 'own_book', true, @book.owner %>
+      </p>
+      <p>
         <%= f.label :book_files %>
         <%= f.fields_for :book_files  do |book_file_form| %>
           <%= book_file_form.file_field :file %>

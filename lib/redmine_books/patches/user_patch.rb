@@ -15,6 +15,7 @@ module RedmineBooks
           has_many :archived_book_records, class_name: :BookRecord, conditions: ["#{BookRecord.table_name}.returned_at IS NOT :null AND #{BookRecord.table_name}.returned_by_id IS NOT :null", { null: nil }]
           has_many :current_book_records, class_name: :BookRecord, conditions: ["#{BookRecord.table_name}.returned_at IS :null AND #{BookRecord.table_name}.returned_by_id IS :null", { null: nil }]
           has_many :books, through: :current_book_records
+          has_many :own_books, class_name: :Book, foreign_key: :owner_id, dependent: :destroy
 
           # make User model able to rate objects
           ajaxful_rater
@@ -31,6 +32,10 @@ module RedmineBooks
       end
 
       module InstanceMethods
+        def own_book?(book)
+          own_books.include? book
+        end
+
         def allowed_books_to?(action, book = nil)
           action = action.to_s
           unless @user_books_permission

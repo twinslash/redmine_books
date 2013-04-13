@@ -1,3 +1,5 @@
+source 'http://rubygems.org'
+
 gem 'carrierwave'
 gem 'simple_form'
 gem 'paperclip'
@@ -11,9 +13,11 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
   gem 'factory_girl'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem 'rack-test'
 end

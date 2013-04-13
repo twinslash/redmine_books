@@ -6,6 +6,7 @@ resources :books do
     get 'load_history'
     post 'estimate'
     put 'estimate'
+    get 'change_visibility'
   end
   collection do
     post 'upload_photo'

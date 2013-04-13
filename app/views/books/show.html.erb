@@ -21,7 +21,7 @@
   <h2><%= @book.title %></h2>
 </div>
 
-<div class="book">
+<div class="book <%= 'invisible' unless @book.visible? %>">
   <div class="book-photo">
       <%= photo_for @book, :original, width: "450px;" %>
   </div>
@@ -30,6 +30,10 @@
     <%= @book.author %></br>
     <b class="book-attribute"><%= l("book.status") %>:</b>
     <%= render 'book_status', book: @book %></br>
+    <% if @book.owner.present? %>
+      <b class="book-attribute"><%= l("book.owner") %>:</b>
+      <%= link_to_user @book.owner %>
+    <% end %></br>
     <% unless @book.description.blank? %>
       <b class="book-attribute"><%= l("book.description") %>:</b>
       <p class="book-description"><%= textilizable(@book.description) %></p>

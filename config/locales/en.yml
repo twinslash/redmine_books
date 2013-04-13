@@ -11,9 +11,11 @@ en:
   label_principal: Principal
   label_all_selected_tags: All selected tags
   label_search_by_tags: Search by tags
+  label_my_books: My books
 
   field_comment: Comment
   field_estimate: Estimate
+  field_own_book: I owner
 
   hint_tags_to_search: Select tags to search
 
@@ -52,6 +54,7 @@ en:
         title: Title
         files: Files
         tag_names: Tags
+        owner: Owner
   book:
     new: Add new book
     current_user: current user
@@ -88,6 +91,8 @@ en:
       models:
         book:
           attributes:
+            base:
+              only_paper_book_can_have_owner: Only a paper book can have an owner
             status:
               must_be_busy_because_current_user_present: "must be 'Busy' because current user present"
 
