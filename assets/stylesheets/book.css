@@ -151,13 +151,14 @@
   clear:left;
 }
 
-.icon-add { background-image: url(../images/add.png); }
-.icon-edit { background-image: url(../images/edit.png); }
-.icon-cancel { background-image: url(../images/cancel.png); }
-.icon-take { background-image: url(../images/take_book_icon.png); }
-.icon-give { background-image: url(../images/give_book_icon.png); }
-.icon-give_instead_user { background-image: url(../images/give_book_instead_user_icon.png); }
-.icon-estimate { background-image: url(../images/estimate_book_icon.png); }
-.icon-make-visible { background-image: url(../images/make_book_visible_icon.png); }
-.icon-make-invisible { background-image: url(../images/make_book_invisible_icon.png); }
+.icon-book-add { background-image: url(../images/add.png); }
+.icon-book-del { background-image: url(../images/delete.png); }
+.icon-book-edit { background-image: url(../images/edit.png); }
+.icon-book-cancel { background-image: url(../images/cancel.png); }
+.icon-book-take { background-image: url(../images/take_book_icon.png); }
+.icon-book-give { background-image: url(../images/give_book_icon.png); }
+.icon-book-give_instead_user { background-image: url(../images/give_book_instead_user_icon.png); }
+.icon-book-estimate { background-image: url(../images/estimate_book_icon.png); }
+.icon-book-make-visible { background-image: url(../images/make_book_visible_icon.png); }
+.icon-book-make-invisible { background-image: url(../images/make_book_invisible_icon.png); }
 .icon-books { background-image: url(../images/books_icon.png); }
