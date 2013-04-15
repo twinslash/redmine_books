@@ -131,17 +131,30 @@ class BooksController < ApplicationController
   end
 
   def change_visibility
-    @book = Book.find(params[:id])
+    @book.visibility = (params[:visible].to_s == "true")
+    respond_to do |format|
+      format.html do
+        unless @book.save
+          flash[:error] = t('error_can_not_change_visibility')
+        end
+        redirect_to book_path(@book)
+      end
+    end
+  end
+
+  def my
+    @books = User.current.own_books
   end
 
 
   private
 
     def check_permission
+      @user ||= User.current
       action = params[:action]
       @book = Book.find(params[:id]) if params[:id]
       @book ||= Book.new
-      if User.current.allowed_books_to? action, @book
+      if @user.allowed_books_to? action, @book
         true
       else
         deny_access

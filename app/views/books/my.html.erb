@@ -1,9 +1,5 @@
 <% content_for :header_tags do %>
-  <%= javascript_include_tag 'book', :plugin => 'redmine_books' %>
-  <%= javascript_include_tag '/select2/select2.js', :plugin => 'redmine_books' %>
-  <%= localise_select2_javascript_for locale %>
   <%= stylesheet_link_tag 'book', :plugin => 'redmine_books' %>
-  <%= stylesheet_link_tag 'select2', :plugin => 'redmine_books' %>
   <%= stylesheet_link_tag 'rate', :plugin => 'redmine_books' %>
 <% end %>
 <% if User.current.allowed_books_to? "add" %>
@@ -11,21 +7,18 @@
     <%= link_to l('book.new'), new_book_path, class: 'icon icon-add' %>
   </div>
 <% end %>
-<h2><%= l(:label_books) %></h2>
+<h2><%= l(:label_my_books) %></h2>
 <% if @books.any? %>
-  <%= pagination_links_full @books_pages, @books_count %>
   <div class="books">
     <%= render @books %>
     <%= ajaxful_rating_style :plugin => 'redmine_books' %>
   </div>
-  <%= pagination_links_full @books_pages, @books_count %>
 <% else %>
   <p class="nodata" style="clear:both;"><%= l(:label_no_data) %></p>
 <% end %>
 
 <% content_for :sidebar do %>
   <div style="margin: 10px 2px;padding:0;margin-bottom:20px;">
-    <%= link_to l('label_my_books'), my_books_path, class: "icon icon-books" %>
+    <%= link_to l('label_books'), books_path, class: 'icon icon-books' %>
   </div>
-  <%= render 'search' %>
 <% end %>

@@ -12,6 +12,7 @@ resources :books do
     post 'upload_photo'
     put 'upload_photo'
     delete 'delete_photo'
+    get 'my'
   end
 end
 
