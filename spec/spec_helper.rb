@@ -4,6 +4,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
 require 'factory_girl'
 require 'rspec/rails'
+require 'database_cleaner'
 
 FactoryGirl.definition_file_paths = [ File.expand_path('../factories', __FILE__) ]
 FactoryGirl.find_definitions
@@ -12,3 +13,5 @@ FactoryGirl.find_definitions
 RSpec::Rails::ControllerExampleGroup.instance_eval do
   include Rails.application.routes.url_helpers
 end
+
+DatabaseCleaner.strategy = :truncation

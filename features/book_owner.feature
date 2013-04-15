@@ -20,7 +20,7 @@ Scenario: make my own book visible
   And I make my book visible
   Then I should see make book invisible link
   When I go on books page
-  Then I should  see my own book on books page
+  Then I should see my own book on books page
 
 Scenario: cannot make invisible my own book that is busy
   Given my own book is busy

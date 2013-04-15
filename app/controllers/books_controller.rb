@@ -10,6 +10,7 @@ class BooksController < ApplicationController
     @match_all = params[:match_all].present? ? true : false
     tagged_options = @match_all ? { } : { any: true }
     scope = params[:tags].blank? ? Book.scoped : Book.tagged_with(@selected_tags, tagged_options)
+    scope = scope.visible unless User.current.admin?
     @books_count = scope.count
     @limit = per_page_option
     @books_pages = Paginator.new(self, @books_count, @limit, params[:page])

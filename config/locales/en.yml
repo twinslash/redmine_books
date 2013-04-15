@@ -28,6 +28,8 @@ en:
   principal_books_action_give: Return book
   principal_books_action_give_instead_user: Return book instead user
   principal_books_action_estimate: Estimate
+  principal_books_action_make_visible: Make visible
+  principal_books_action_make_invisible: Make invisible
 
   notice_book_deleted: "Book '%{title}' deleted"
   notice_book_saved: Book successfully saved
@@ -38,6 +40,7 @@ en:
   error_book_deleting: "An error occurred when removing the book '%{title}'"
   error_book_taking: "An error occurred when taking the book '%{title}'"
   error_book_returning: "An error occurred when returning the book '%{title}'"
+  error_can_not_change_visibility: You can not change the appearance of the book
 
   helpers:
     submit:

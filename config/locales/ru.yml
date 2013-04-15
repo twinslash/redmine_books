@@ -28,6 +28,8 @@ ru:
   principal_books_action_give: Вернуть книгу
   principal_books_action_give_instead_user: Вернуть книгу вместо пользоветеля
   principal_books_action_estimate: Оценить
+  principal_books_action_make_visible: Сделать видимой
+  principal_books_action_make_invisible: Сделать невидимой
 
   notice_book_deleted: "Книга '%{title}' удалена"
   notice_book_saved: Книга успешно сохранена

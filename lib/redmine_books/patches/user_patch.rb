@@ -45,23 +45,27 @@ module RedmineBooks
             end
           end
           allowed = case action
+            when "show"
+              admin? || book.visible? || own_books.include?(book)
             when "add", "new", "create"
               action = "add"
               admin? || @user_books_permission.allows?(action)
             when "edit", "update"
               action = "edit"
-              admin? || @user_books_permission.allows?(action)
+              admin? || own_book?(book) || @user_books_permission.allows?(action) && book.owner.nil?
             when "take"
-              (@user_books_permission.allows?(action) || admin?) && book.is_a?(Book) && book.free?
+              (admin? || @user_books_permission.allows?(action)) && !own_book?(book) && book.is_a?(Book) && book.free?
             when "give"
               book.is_a?(Book) && book.busy? && book.current_book_record && (book.current_book_record.user == self)
             when "give_instead_user"
               (admin? || @user_books_permission.allows?(action)) && book.is_a?(Book) && book.busy? && book.current_book_record && (book.current_book_record.user != self)
             when "delete", "destroy"
               action = "delete"
-              admin? || @user_books_permission.allows?(action)
+              admin? || own_book?(book) || @user_books_permission.allows?(action) && book.owner.nil?
             when "estimate"
               admin? || @user_books_permission.allows?(action)
+            when "change_visibility"
+              admin? || own_book?(book) && book.free?
             else
               false
             end

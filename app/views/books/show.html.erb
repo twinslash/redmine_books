@@ -7,7 +7,8 @@
 <% end %>
 
 <div class="contextual">
-  <%= link_to l(:button_back), books_path, class: "icon icon-cancel" %>
+  <%= link_to l(:button_back), session[:back_url] || back_url, class: "icon icon-cancel" %>
+  <%= link_to_action "change_visibility", @book, @is_visible ? { title:  l('principal_books_action_make_invisible'), url: { visible: false }, class: "icon icon-make-invisible" } : { title: l('principal_books_action_make_visible'), url: { visible: true }, class: "icon icon-make-visible" } %>
   <%= link_to_action "estimate", @book, :onclick => "showFormForRate(#{ @rate.id });return false;" %>
   <% ["take", "give", "give_instead_user", "edit", "delete"].each do |action| %>
     <%= link_to_action action, @book %>
