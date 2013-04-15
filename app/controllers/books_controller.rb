@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
   unloadable
-  before_filter :check_permission, only: [:new, :create, :edit, :update, :take, :give, :give_instead_user, :destroy, :estimate]
+  before_filter :check_permission, except: [:index, :upload_photo, :delete_photo, :load_history, :my]
   before_filter :assembly_photo_path, only: [:upload_photo, :delete_photo]
   before_filter :delete_empty_book_files, only: [:create, :update]
+  before_filter :store_back_url_in_session, only: [:index, :my]
 
   def index
     @tags = Book.tag_counts
@@ -170,5 +171,9 @@ class BooksController < ApplicationController
       params[:book][:book_files_attributes] && params[:book][:book_files_attributes].select! do |_, v|
         v.is_a?(Hash) && v[:file].present?
       end
+    end
+
+    def store_back_url_in_session
+      session[:back_url] = url_for(params)
     end
 end

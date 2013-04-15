@@ -1,3 +1,11 @@
+.icon {
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+}
+
 .book-form-photo-group {
   margin-left: 180px;
 }
@@ -143,7 +151,13 @@
   clear:left;
 }
 
-a.icon-take { background-image: url(../images/take_book_icon.png); }
-a.icon-give { background-image: url(../images/give_book_icon.png); }
-a.icon-give_instead_user { background-image: url(../images/give_book_instead_user_icon.png); }
-a.icon-estimate { background-image: url(../images/estimate_book_icon.png); }
+.icon-add { background-image: url(../images/add.png); }
+.icon-edit { background-image: url(../images/edit.png); }
+.icon-cancel { background-image: url(../images/cancel.png); }
+.icon-take { background-image: url(../images/take_book_icon.png); }
+.icon-give { background-image: url(../images/give_book_icon.png); }
+.icon-give_instead_user { background-image: url(../images/give_book_instead_user_icon.png); }
+.icon-estimate { background-image: url(../images/estimate_book_icon.png); }
+.icon-make-visible { background-image: url(../images/make_book_visible_icon.png); }
+.icon-make-invisible { background-image: url(../images/make_book_invisible_icon.png); }
+.icon-books { background-image: url(../images/books_icon.png); }
