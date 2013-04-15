@@ -25,9 +25,9 @@ module BooksHelper
     if User.current.allowed_books_to? action, book
       case action
       when "delete"
-        link_to title, book_path(book, options.delete(:url)), { method: :delete, data: { confirm: l(:text_are_you_sure) }, class: 'icon icon-del', title: title }.merge(options)
+        link_to title, book_path(book, options.delete(:url)), { method: :delete, data: { confirm: l(:text_are_you_sure) }, class: 'icon icon-book-del', title: title }.merge(options)
       else
-        link_to title, send("#{action}_book_path", book, options.delete(:url)), { class: "icon icon-#{action}", title: title }.merge(options)
+        link_to title, send("#{action}_book_path", book, options.delete(:url)), { class: "icon icon-book-#{action}", title: title }.merge(options)
       end
     end
   end
